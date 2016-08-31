@@ -39,7 +39,7 @@ var AssemblyInfoPath = File("./src/ReactiveHistory/Properties/AssemblyInfo.cs");
 var ReleasePlatform = "Any CPU";
 var ReleaseConfiguration = "Release";
 var MSBuildSolution = "./ReactiveHistory.sln";
-var XBuildSolution = "./ReactiveHistory.mono.sln";
+var XBuildSolution = "./ReactiveHistory.sln";
 
 ///////////////////////////////////////////////////////////////////////////////
 // PARAMETERS
