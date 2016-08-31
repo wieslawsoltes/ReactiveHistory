@@ -61,3 +61,14 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# Git files
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitmodules export-ignore
+
+# NuGet packages
+packages export-ignore
+
+# API Documentation
+api export-ignore
