@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.ViewModels", "samples\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj", "{A3C460F7-DF9E-4D6B-8CF3-A1E668C7F2F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Wpf", "ReactiveHistorySample.Wpf\ReactiveHistorySample.Wpf.csproj", "{3F0AC124-875C-4F92-8FAE-FF201C271CCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Wpf", "samples\ReactiveHistorySample.Wpf\ReactiveHistorySample.Wpf.csproj", "{3F0AC124-875C-4F92-8FAE-FF201C271CCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
