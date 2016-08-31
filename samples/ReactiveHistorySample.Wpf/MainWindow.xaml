@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:ReactiveHistorySample.Wpf.Controls"
         xmlns:vm="clr-namespace:ReactiveHistorySample.ViewModels;assembly=ReactiveHistorySample.ViewModels"
         mc:Ignorable="d"
-        Title="ReactiveHistorySample.Wpf"  Height="700" Width="1000"
+        Title="ReactiveHistorySample.Wpf" Height="700" Width="1000"
         WindowStartupLocation="CenterScreen"
         UseLayoutRounding="True" SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display">
     <Window.Resources>
