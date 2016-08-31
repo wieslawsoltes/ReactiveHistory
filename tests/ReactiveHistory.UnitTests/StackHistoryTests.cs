@@ -141,7 +141,7 @@ namespace ReactiveHistory.UnitTests
                 target.Snapshot(() => undoCount++, () => redoCount++);
                 var undo1 = target.Undos.Peek();
                 var result1 = target.Undo();
-                var redo = target.Redos.Peek();
+                var redo1 = target.Redos.Peek();
                 var result2 = target.Redo();
                 Assert.Equal(1, target.Undos.Count);
                 Assert.Equal(0, target.Redos.Count);
@@ -153,6 +153,7 @@ namespace ReactiveHistory.UnitTests
 
                 var undo2 = target.Undos.Peek();
                 Assert.Equal(undo1, undo2);
+                Assert.Equal(undo1, redo1);
                 Assert.Equal(1, undoCount);
                 Assert.Equal(1, redoCount);
                 Assert.Equal(true, result1);
