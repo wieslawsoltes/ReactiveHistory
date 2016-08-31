@@ -5,7 +5,7 @@ os:
 mono:
   - latest
 script:
-  - ./build.sh --target "Travis" --platform "Any CPU" --configuration "Release"
+  - ./build.sh --target "Travis" --platform "Mono" --configuration "Release"
 notifications:
   email: false
   webhooks:
