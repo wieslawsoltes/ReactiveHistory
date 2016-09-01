@@ -75,7 +75,7 @@ namespace ReactiveHistorySample.Avalonia
                             line = new LineShape(layer1, "line");
                             line.Start = new PointShape(point.X, point.Y, line1, "start");
                             line.End = new PointShape(point.X, point.Y, line1, "end");
-                            layer1.Shapes.CreateWithHistory(line, history);
+                            layer1.Shapes.AddWithHistory(line, history);
                             history.IsPaused = true;
                             layerCanvas.InvalidateVisual();
                         }

@@ -9,13 +9,13 @@ namespace ReactiveHistory.UnitTests
     {
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void CreateWithHistory_Add_Item_Empty_List()
+        public void AddWithHistory_Add_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
             var item0 = new Item("item0");
 
-            target.CreateWithHistory(item0, history);
+            target.AddWithHistory(item0, history);
             Assert.Equal(1, target.Count);
             Assert.Equal(item0, target[0]);
 
@@ -29,13 +29,13 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void CreateWithHistory_Insert_Item_Empty_List()
+        public void AddWithHistory_Insert_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
             var item0 = new Item("item0");
 
-            target.CreateWithHistory(0, item0, history);
+            target.AddWithHistory(0, item0, history);
             Assert.Equal(1, target.Count);
             Assert.Equal(item0, target[0]);
 
@@ -49,7 +49,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void UpdateWithHistory_Replace_Item_Empty_List()
+        public void ReplaceWithHistory_Replace_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -60,7 +60,7 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(1, target.Count);
             Assert.Equal(item0, target[0]);
 
-            target.UpdateWithHistory(0, item1, history);
+            target.ReplaceWithHistory(0, item1, history);
             Assert.Equal(1, target.Count);
             Assert.Equal(item1, target[0]);
 
@@ -75,7 +75,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void DeleteWithHistory_Remove_Item_Empty_List()
+        public void RemoveWithHistory_Remove_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -85,7 +85,7 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(1, target.Count);
             Assert.Equal(item0, target[0]);
 
-            target.DeleteWithHistory(item0, history);
+            target.RemoveWithHistory(item0, history);
             Assert.Equal(0, target.Count);
 
             history.Undo();
@@ -98,7 +98,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void DeleteWithHistory_Remove_Index_Empty_List()
+        public void RemoveWithHistory_Remove_Index_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -108,7 +108,7 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(1, target.Count);
             Assert.Equal(item0, target[0]);
 
-            target.DeleteWithHistory(0, history);
+            target.RemoveWithHistory(0, history);
             Assert.Equal(0, target.Count);
 
             history.Undo();

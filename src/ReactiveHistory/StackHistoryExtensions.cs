@@ -17,7 +17,7 @@ namespace ReactiveHistory
         /// <param name="source">The source list.</param>
         /// <param name="item">The item to add.</param>
         /// <param name="history">The history object.</param>
-        public static void CreateWithHistory<T>(this IList<T> source, T item, IHistory history)
+        public static void AddWithHistory<T>(this IList<T> source, T item, IHistory history)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -43,7 +43,7 @@ namespace ReactiveHistory
         /// <param name="index">The item insertion index.</param>
         /// <param name="item">The item to insert.</param>
         /// <param name="history">The history object.</param>
-        public static void CreateWithHistory<T>(this IList<T> source, int index, T item, IHistory history)
+        public static void AddWithHistory<T>(this IList<T> source, int index, T item, IHistory history)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -71,7 +71,7 @@ namespace ReactiveHistory
         /// <param name="index">The item index to replace.</param>
         /// <param name="item">The replaced item.</param>
         /// <param name="history">The history object.</param>
-        public static void UpdateWithHistory<T>(this IList<T> source, int index, T item, IHistory history)
+        public static void ReplaceWithHistory<T>(this IList<T> source, int index, T item, IHistory history)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -100,7 +100,7 @@ namespace ReactiveHistory
         /// <param name="source">The source list.</param>
         /// <param name="item">The item to remove.</param>
         /// <param name="history">The history object.</param>
-        public static void DeleteWithHistory<T>(this IList<T> source, T item, IHistory history)
+        public static void RemoveWithHistory<T>(this IList<T> source, T item, IHistory history)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -125,7 +125,7 @@ namespace ReactiveHistory
         /// <param name="source">The source list.</param>
         /// <param name="index">The item index to remove.</param>
         /// <param name="history">The history object.</param>
-        public static void DeleteWithHistory<T>(this IList<T> source, int index, IHistory history)
+        public static void RemoveWithHistory<T>(this IList<T> source, int index, IHistory history)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));

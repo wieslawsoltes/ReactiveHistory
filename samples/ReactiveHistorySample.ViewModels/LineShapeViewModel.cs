@@ -45,7 +45,7 @@ namespace ReactiveHistorySample.ViewModels
         {
             if (line.Owner != null && line.Owner is Layer)
             {
-                (line.Owner as Layer).Shapes.DeleteWithHistory(line, history);
+                (line.Owner as Layer).Shapes.RemoveWithHistory(line, history);
             }
         }
 
