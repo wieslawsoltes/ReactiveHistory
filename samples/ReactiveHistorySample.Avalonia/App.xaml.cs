@@ -45,12 +45,11 @@ namespace ReactiveHistorySample.Avalonia
                 var line1 = new LineShape(layer1, "line1");
                 line1.Start = new PointShape(100, 100, line1, "start11");
                 line1.End = new PointShape(200, 100, line1, "end11");
+                layer1.Shapes.Add(line1);
 
                 var line2 = new LineShape(layer1, "line2");
                 line2.Start = new PointShape(100, 200, line2, "start21");
                 line2.End = new PointShape(200, 200, line2, "end21");
-
-                layer1.Shapes.Add(line1);
                 layer1.Shapes.Add(line2);
 
                 // ViewModel
@@ -64,6 +63,7 @@ namespace ReactiveHistorySample.Avalonia
                 var layerCanvas = mainWindow.FindControl<LayerCanvas>("layerCanvas");
 
                 LineShape line = null;
+
                 layerCanvas.PointerPressed += (sender, args) =>
                 {
                     if (args.MouseButton == MouseButton.Left)
