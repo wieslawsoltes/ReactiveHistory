@@ -76,22 +76,6 @@ namespace ReactiveHistorySample.Wpf
                     }
                 };
 
-                /*
-                foreach (var shape in layerViewModel.Shapes)
-                {
-                    shape.Name.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-
-                    shape.Start.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                    shape.Start.Value.Name.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                    shape.Start.Value.X.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                    shape.Start.Value.Y.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-
-                    shape.End.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                    shape.End.Value.Name.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                    shape.End.Value.X.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                    shape.End.Value.Y.Subscribe((x) => layerCanvas.InvalidateVisual()).AddTo(disposable);
-                }
-                */
 
                 mainWindow.DataContext = layerViewModel;
                 mainWindow.ShowDialog();
