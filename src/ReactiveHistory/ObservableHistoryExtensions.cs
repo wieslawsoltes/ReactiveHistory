@@ -6,7 +6,7 @@ using System.Reactive.Linq;
 namespace ReactiveHistory
 {
     /// <summary>
-    /// Observable extension methods for the generic <see cref="IObservable{T}"/> implementations.
+    /// Observable extension methods for the generic observable implementations.
     /// </summary>
     public static class ObservableHistoryExtensions
     {
