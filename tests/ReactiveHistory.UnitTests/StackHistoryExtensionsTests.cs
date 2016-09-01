@@ -9,7 +9,7 @@ namespace ReactiveHistory.UnitTests
     {
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void AddWithHistory_Add_Item_Empty_List()
+        public void AddWithHistory_Adds_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -29,7 +29,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void InsertWithHistory_Insert_Item_Empty_List()
+        public void InsertWithHistory_Inserts_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -49,7 +49,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void ReplaceWithHistory_Replace_Item_Empty_List()
+        public void ReplaceWithHistory_Replaces_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -75,7 +75,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void RemoveWithHistory_Remove_Item_Empty_List()
+        public void RemoveWithHistory_Removes_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
@@ -98,7 +98,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void RemoveWithHistory_Remove_Index_Empty_List()
+        public void RemoveWithHistory_Removes_Index_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
