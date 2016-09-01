@@ -183,6 +183,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\LineShapeView.xaml.cs">
+      <DependentUpon>LineShapeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PointShapeView.xaml.cs">
+      <DependentUpon>PointShapeView.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="App.xaml" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -211,6 +217,12 @@
       <Project>{a3c460f7-df9e-4d6b-8cf3-a1e668c7f2f1}</Project>
       <Name>ReactiveHistorySample.ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PointShapeView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LineShapeView.xaml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

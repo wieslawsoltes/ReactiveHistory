@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="ReactiveHistorySample.Avalonia.Views.PointShapeView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name.Value}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="X" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding X.Value}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="Y" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Y.Value}" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
