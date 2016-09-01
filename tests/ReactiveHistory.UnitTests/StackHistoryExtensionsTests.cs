@@ -29,6 +29,52 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void AddWithHistory_Adds_Items_As_Last()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+            var item0 = new Item("item0");
+            var item1 = new Item("item1");
+            var item2 = new Item("item2");
+
+            target.AddWithHistory(item0, history);
+            target.AddWithHistory(item1, history);
+            target.AddWithHistory(item2, history);
+            Assert.Equal(3, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+
+            history.Undo();
+            Assert.Equal(2, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+
+            history.Undo();
+            Assert.Equal(1, target.Count);
+            Assert.Equal(item0, target[0]);
+
+            history.Undo();
+            Assert.Equal(0, target.Count);
+
+            history.Redo();
+            Assert.Equal(1, target.Count);
+            Assert.Equal(item0, target[0]);
+
+            history.Redo();
+            Assert.Equal(2, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+
+            history.Redo();
+            Assert.Equal(3, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
         public void InsertWithHistory_Inserts_Item_Empty_List()
         {
             var history = new StackHistory();
