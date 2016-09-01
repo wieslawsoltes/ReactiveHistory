@@ -5,35 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReactiveHistorySample.Avalonia;assembly=ReactiveHistorySample.Avalonia"
         xmlns:controls="clr-namespace:ReactiveHistorySample.Avalonia.Controls;assembly=ReactiveHistorySample.Avalonia"
+        xmlns:views="clr-namespace:ReactiveHistorySample.Avalonia.Views;assembly=ReactiveHistorySample.Avalonia"
         xmlns:vm="clr-namespace:ReactiveHistorySample.ViewModels;assembly=ReactiveHistorySample.ViewModels"
         mc:Ignorable="d"
         Title="ReactiveHistorySample.Avalonia" Height="700" Width="1000"
         UseLayoutRounding="True">
     <Window.DataTemplates>
         <DataTemplate DataType="vm:PointShapeViewModel">
-            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name.Value}" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="X" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding X.Value}" VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Y" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Y.Value}" VerticalAlignment="Center"/>
-            </Grid>
+            <views:PointShapeView/>
         </DataTemplate>
         <DataTemplate DataType="vm:LineShapeViewModel">
-            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name.Value}" VerticalAlignment="Center"/>
-                <TabControl Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
-                    <TabItem Header="Start">
-                        <ContentControl Content="{Binding Start.Value}"/>
-                    </TabItem>
-                    <TabItem Header="End">
-                        <ContentControl Content="{Binding End.Value}"/>
-                    </TabItem>
-                </TabControl>
-                <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Content="Delete" Command="{Binding DeleteCommand}"/>
-            </Grid>
+            <views:LineShapeView/>
         </DataTemplate>
     </Window.DataTemplates>
     <Grid Margin="4" ColumnDefinitions="150,150,*" RowDefinitions="Auto,*">
