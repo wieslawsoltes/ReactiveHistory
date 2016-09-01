@@ -852,8 +852,8 @@ namespace ReactiveHistory.UnitTests
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
-
             var item0 = new Item("item0");
+
             target.Add(item0);
             Assert.Equal(1, target.Count);
             Assert.Equal(0, history.Undos.Count);
