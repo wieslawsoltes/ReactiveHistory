@@ -167,14 +167,8 @@ namespace ReactiveHistory.UnitTests
             var target = new StackHistory();
 
             target.Snapshot(
-                undo: () => 
-                {
-                    Assert.True(target.IsPaused);
-                }, 
-                redo: () => 
-                {
-                    Assert.True(target.IsPaused);
-                });
+                undo: () => Assert.True(target.IsPaused), 
+                redo: () => Assert.True(target.IsPaused));
 
             Assert.False(target.IsPaused);
             target.Undo();
