@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ReactiveHistory
 {
@@ -141,6 +142,43 @@ namespace ReactiveHistory
             Action undo = () => source.Insert(index, item);
             history.Snapshot(undo, redo);
             redo.Invoke();
+        }
+
+        /// <summary>
+        /// Removes all items from the source list with history.
+        /// </summary>
+        /// <typeparam name="T">The item type.</typeparam>
+        /// <param name="source">The source list.</param>
+        /// <param name="history">The history object.</param>
+        public static void ClearWithHistory<T>(this IList<T> source, IHistory history)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            if (history == null)
+                throw new ArgumentNullException(nameof(history));
+
+            if (source.Count > 0)
+            {
+                T[] items = source.ToArray();
+                Action redo = () =>
+                {
+                    foreach (var item in items)
+                    {
+                        source.Remove(item);
+                    }
+                };
+                Action undo = () =>
+                {
+                    foreach (var item in items)
+                    {
+                        source.Add(item);
+                    }
+                };
+
+                history.Snapshot(undo, redo);
+                redo.Invoke();
+            }
         }
     }
 }
