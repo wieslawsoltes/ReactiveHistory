@@ -259,6 +259,147 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void ReplaceWithHistory_Replaces_Items_List_Head()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+            var item0 = new Item("item0");
+            var item1 = new Item("item1");
+            var item2 = new Item("item2");
+            var item3 = new Item("item3");
+            var replace1 = new Item("replace1");
+            var replace2 = new Item("replace2");
+
+            target.Add(item0);
+            target.Add(item1);
+            target.Add(item2);
+            target.Add(item3);
+
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            target.ReplaceWithHistory(0, replace1, history);
+            target.ReplaceWithHistory(1, replace2, history);
+            Assert.Equal(4, target.Count);
+            Assert.Equal(replace1, target[0]);
+            Assert.Equal(replace2, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Undo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(replace1, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Undo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void ReplaceWithHistory_Replaces_Items_List_Tail()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+            var item0 = new Item("item0");
+            var item1 = new Item("item1");
+            var item2 = new Item("item2");
+            var item3 = new Item("item3");
+            var replace1 = new Item("replace1");
+            var replace2 = new Item("replace2");
+
+            target.Add(item0);
+            target.Add(item1);
+            target.Add(item2);
+            target.Add(item3);
+
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            target.ReplaceWithHistory(3, replace1, history);
+            target.ReplaceWithHistory(2, replace2, history);
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(replace2, target[2]);
+            Assert.Equal(replace1, target[3]);
+
+            history.Undo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(replace1, target[3]);
+
+            history.Undo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void ReplaceWithHistory_Replaces_Items_List_Middle()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+            var item0 = new Item("item0");
+            var item1 = new Item("item1");
+            var item2 = new Item("item2");
+            var item3 = new Item("item3");
+            var replace1 = new Item("replace1");
+            var replace2 = new Item("replace2");
+
+            target.Add(item0);
+            target.Add(item1);
+            target.Add(item2);
+            target.Add(item3);
+
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            target.ReplaceWithHistory(1, replace1, history);
+            target.ReplaceWithHistory(2, replace2, history);
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(replace1, target[1]);
+            Assert.Equal(replace2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Undo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(replace1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Undo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
         public void RemoveWithHistory_Removes_Item_Empty_List()
         {
             var history = new StackHistory();
