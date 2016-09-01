@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Avalo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{E5AE18B0-5147-4FDD-B3A4-3EB695D7C444}"
 	ProjectSection(SolutionItems) = preProject
-		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
+		src\Shared\SharedAssemblyInfo.cs = src\Shared\SharedAssemblyInfo.cs
 	EndProjectSection
 EndProject
 Global

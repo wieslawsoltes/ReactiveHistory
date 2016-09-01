@@ -36,6 +36,9 @@
     <DocumentationFile>bin\Release\ReactiveHistory.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="IHistory.cs" />
     <Compile Include="ObservableHistoryExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
