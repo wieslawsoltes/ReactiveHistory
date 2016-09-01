@@ -35,13 +35,13 @@ namespace ReactiveHistorySample.ViewModels
             this.Name.ObserveWithHistory(name => layer.Name = name, layer.Name, history).AddTo(this.Disposable);
 
             UndoCommand = new ReactiveCommand(history.CanUndo, false);
-            UndoCommand.Subscribe(_ => history.Undo()).AddTo(this.Disposable);;
+            UndoCommand.Subscribe(_ => history.Undo()).AddTo(this.Disposable);
 
             RedoCommand = new ReactiveCommand(history.CanRedo, false);
-            RedoCommand.Subscribe(_ => history.Redo()).AddTo(this.Disposable);;
+            RedoCommand.Subscribe(_ => history.Redo()).AddTo(this.Disposable);
 
             ClearCommand = new ReactiveCommand(history.CanClear, false);
-            ClearCommand.Subscribe(_ => history.Clear()).AddTo(this.Disposable);;
+            ClearCommand.Subscribe(_ => history.Clear()).AddTo(this.Disposable);
         }
 
         public void Dispose()
