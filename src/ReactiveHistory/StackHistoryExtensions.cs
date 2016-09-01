@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace ReactiveHistory
 {
     /// <summary>
-    /// Stack history extension methods for the generic <see cref="IList{T}"/> implementations.
+    /// Stack history extension methods for the generic list implementations.
     /// </summary>
     public static class StackHistoryExtensions
     {
