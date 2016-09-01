@@ -355,7 +355,7 @@ Task("Publish-Docs")
     .Does(() =>
 {
     // TODO
-}
+});
 
 Task("Publish-MyGet")
     .IsDependentOn("Create-NuGet-Packages")
