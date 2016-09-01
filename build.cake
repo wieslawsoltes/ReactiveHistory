@@ -92,9 +92,13 @@ if (isRunningOnAppVeyor)
 var artifactsDir = (DirectoryPath)Directory("./artifacts");
 var testResultsDir = artifactsDir.Combine("test-results");
 var nugetRoot = artifactsDir.Combine("nuget");
+var zipRoot = artifactsDir.Combine("zip");
 var docsRoot = artifactsDir.Combine("docs");
+var docsSiteRoot = docsRoot.Combine("_site");
 
 var dirSuffix = isPlatformAnyCPU ? configuration : platform + "/" + configuration;
+
+var zipDocsSiteArtifacts = zipRoot.CombineWithFilePath("ReactiveHistory-Docs-" + version + ".zip");
 
 var buildDirs = 
     GetDirectories("./src/**/bin/" + dirSuffix) + 
@@ -229,7 +233,9 @@ Task("Clean")
     CleanDirectory(artifactsDir);
     CleanDirectory(testResultsDir);
     CleanDirectory(nugetRoot);
+    CleanDirectory(zipRoot);
     CleanDirectory(docsRoot);
+    CleanDirectory(docsSiteRoot);
 });
 
 Task("Restore-NuGet-Packages")
@@ -324,6 +330,13 @@ Task("Create-Docs")
     });
 });
 
+Task("Zip-Files")
+    .IsDependentOn("Create-Docs")
+    .Does(() =>
+{
+    Zip(docsSiteRoot, zipDocsSiteArtifacts);
+});
+
 Task("Create-NuGet-Packages")
     .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
@@ -343,7 +356,6 @@ Task("Publish-Docs")
     .WithCriteria(() => isNuGetRelease)
     .Does(() =>
 {
-    // TODO
 });
 
 Task("Publish-MyGet")
@@ -419,12 +431,14 @@ Task("Publish-NuGet")
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Package")
+  .IsDependentOn("Zip-Files")
   .IsDependentOn("Create-NuGet-Packages");
 
 Task("Default")
   .IsDependentOn("Package");
 
 Task("AppVeyor")
+  .IsDependentOn("Zip-Files")
   .IsDependentOn("Publish-Docs")
   .IsDependentOn("Publish-MyGet")
   .IsDependentOn("Publish-NuGet");
