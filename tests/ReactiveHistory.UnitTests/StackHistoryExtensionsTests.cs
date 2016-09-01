@@ -485,6 +485,93 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(0, target.Count);
         }
 
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void ClearWithHistory_Does_Nothing_Empty_List()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+
+            Assert.Equal(0, target.Count);
+            Assert.Equal(0, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+
+            target.ClearWithHistory(history);
+
+            Assert.Equal(0, target.Count);
+            Assert.Equal(0, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void ClearWithHistory_Removes_All_Items_Single_Item()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+
+            var item0 = new Item("item0");
+            target.Add(item0);
+            Assert.Equal(1, target.Count);
+            Assert.Equal(0, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+
+            target.ClearWithHistory(history);
+            Assert.Equal(0, target.Count);
+            Assert.Equal(1, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+
+            history.Undo();
+            Assert.Equal(1, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(0, history.Undos.Count);
+            Assert.Equal(1, history.Redos.Count);
+
+            history.Redo();
+            Assert.Equal(0, target.Count);
+            Assert.Equal(1, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistoryExtensions")]
+        public void ClearWithHistory_Removes_All_Items_Multiple_Item()
+        {
+            var history = new StackHistory();
+            var target = new ObservableCollection<Item>();
+
+            var item0 = new Item("item0");
+            var item1 = new Item("item1");
+            var item2 = new Item("item2");
+            target.Add(item0);
+            target.Add(item1);
+            target.Add(item2);
+            Assert.Equal(3, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(0, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+
+            target.ClearWithHistory(history);
+            Assert.Equal(0, target.Count);
+            Assert.Equal(1, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+
+            history.Undo();
+            Assert.Equal(3, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(0, history.Undos.Count);
+            Assert.Equal(1, history.Redos.Count);
+
+            history.Redo();
+            Assert.Equal(0, target.Count);
+            Assert.Equal(1, history.Undos.Count);
+            Assert.Equal(0, history.Redos.Count);
+        }
+
         class Item
         {
             public string Name { get; set; }
