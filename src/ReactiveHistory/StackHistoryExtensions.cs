@@ -28,14 +28,11 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            if (!history.IsPaused)
-            {
-                int index = source.Count;
-                Action redo = () => source.Insert(index, item);
-                Action undo = () => source.RemoveAt(index);
-                history.Snapshot(undo, redo);
-                redo.Invoke();
-            }
+            int index = source.Count;
+            Action redo = () => source.Insert(index, item);
+            Action undo = () => source.RemoveAt(index);
+            history.Snapshot(undo, redo);
+            redo.Invoke();
         }
 
         /// <summary>
@@ -60,13 +57,10 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            if (!history.IsPaused)
-            {
-                Action redo = () => source.Insert(index, item);
-                Action undo = () => source.RemoveAt(index);
-                history.Snapshot(undo, redo);
-                redo.Invoke();
-            }
+            Action redo = () => source.Insert(index, item);
+            Action undo = () => source.RemoveAt(index);
+            history.Snapshot(undo, redo);
+            redo.Invoke();
         }
 
         /// <summary>
@@ -91,15 +85,12 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            if (!history.IsPaused)
-            {
-                T oldValue = source[index];
-                T newValue = item;
-                Action redo = () => source[index] = newValue;
-                Action undo = () => source[index] = oldValue;
-                history.Snapshot(undo, redo);
-                redo.Invoke();
-            }
+            T oldValue = source[index];
+            T newValue = item;
+            Action redo = () => source[index] = newValue;
+            Action undo = () => source[index] = oldValue;
+            history.Snapshot(undo, redo);
+            redo.Invoke();
         }
 
         /// <summary>
@@ -120,14 +111,11 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            if (!history.IsPaused)
-            {
-                int index = source.IndexOf(item);
-                Action redo = () => source.RemoveAt(index);
-                Action undo = () => source.Insert(index, item);
-                history.Snapshot(undo, redo);
-                redo.Invoke();
-            }
+            int index = source.IndexOf(item);
+            Action redo = () => source.RemoveAt(index);
+            Action undo = () => source.Insert(index, item);
+            history.Snapshot(undo, redo);
+            redo.Invoke();
         }
 
         /// <summary>
@@ -148,14 +136,11 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            if (!history.IsPaused)
-            {
-                T item = source[index];
-                Action redo = () => source.RemoveAt(index);
-                Action undo = () => source.Insert(index, item);
-                history.Snapshot(undo, redo);
-                redo.Invoke();
-            }
+            T item = source[index];
+            Action redo = () => source.RemoveAt(index);
+            Action undo = () => source.Insert(index, item);
+            history.Snapshot(undo, redo);
+            redo.Invoke();
         }
     }
 }
