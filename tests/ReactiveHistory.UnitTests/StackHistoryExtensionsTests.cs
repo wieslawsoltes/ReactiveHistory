@@ -35,7 +35,7 @@ namespace ReactiveHistory.UnitTests
             var target = new ObservableCollection<Item>();
             var item0 = new Item("item0");
 
-            target.AddWithHistory(0, item0, history);
+            target.InsertWithHistory(0, item0, history);
             Assert.Equal(1, target.Count);
             Assert.Equal(item0, target[0]);
 

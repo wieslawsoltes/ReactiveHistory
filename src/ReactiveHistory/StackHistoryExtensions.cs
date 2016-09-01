@@ -43,7 +43,7 @@ namespace ReactiveHistory
         /// <param name="index">The item insertion index.</param>
         /// <param name="item">The item to insert.</param>
         /// <param name="history">The history object.</param>
-        public static void AddWithHistory<T>(this IList<T> source, int index, T item, IHistory history)
+        public static void InsertWithHistory<T>(this IList<T> source, int index, T item, IHistory history)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
