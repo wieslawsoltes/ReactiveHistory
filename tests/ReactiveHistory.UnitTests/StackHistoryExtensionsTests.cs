@@ -29,7 +29,7 @@ namespace ReactiveHistory.UnitTests
 
         [Fact]
         [Trait("ReactiveHistory", "StackHistoryExtensions")]
-        public void AddWithHistory_Insert_Item_Empty_List()
+        public void InsertWithHistory_Insert_Item_Empty_List()
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
