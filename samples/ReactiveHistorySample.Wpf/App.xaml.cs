@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Wiesław Šoltés. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Reactive.Disposables;
 using System.Windows;
 using Reactive.Bindings.Extensions;
@@ -76,6 +77,7 @@ namespace ReactiveHistorySample.Wpf
                     }
                 };
 
+                history.CanClear.Subscribe(_ => layerCanvas.InvalidateVisual()).AddTo(disposable);
 
                 mainWindow.DataContext = layerViewModel;
                 mainWindow.ShowDialog();
