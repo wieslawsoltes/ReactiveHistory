@@ -27,9 +27,7 @@
         <ListBox Grid.Column="0" Grid.Row="1" Name="shapes" Items="{Binding Shapes}">
             <ListBox.DataTemplates>
                 <DataTemplate DataType="vm:LineShapeViewModel">
-                    <!-- FIXME: The correct binding should Name.Value -->
-                    <!--<TextBlock Text="{Binding Name.Value}"/>-->
-                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding Name.Value, FallbackValue=FIXME!}"/>
                 </DataTemplate>
             </ListBox.DataTemplates>
         </ListBox>
