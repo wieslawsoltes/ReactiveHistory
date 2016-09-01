@@ -274,7 +274,6 @@ namespace ReactiveHistory.UnitTests
             target.Add(item1);
             target.Add(item2);
             target.Add(item3);
-
             Assert.Equal(4, target.Count);
             Assert.Equal(item0, target[0]);
             Assert.Equal(item1, target[1]);
@@ -335,7 +334,6 @@ namespace ReactiveHistory.UnitTests
             target.Add(item1);
             target.Add(item2);
             target.Add(item3);
-
             Assert.Equal(4, target.Count);
             Assert.Equal(item0, target[0]);
             Assert.Equal(item1, target[1]);
@@ -395,7 +393,6 @@ namespace ReactiveHistory.UnitTests
             target.Add(item1);
             target.Add(item2);
             target.Add(item3);
-
             Assert.Equal(4, target.Count);
             Assert.Equal(item0, target[0]);
             Assert.Equal(item1, target[1]);
@@ -491,13 +488,11 @@ namespace ReactiveHistory.UnitTests
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
-
             Assert.Equal(0, target.Count);
             Assert.Equal(0, history.Undos.Count);
             Assert.Equal(0, history.Redos.Count);
 
             target.ClearWithHistory(history);
-
             Assert.Equal(0, target.Count);
             Assert.Equal(0, history.Undos.Count);
             Assert.Equal(0, history.Redos.Count);
@@ -539,10 +534,10 @@ namespace ReactiveHistory.UnitTests
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
-
             var item0 = new Item("item0");
             var item1 = new Item("item1");
             var item2 = new Item("item2");
+
             target.Add(item0);
             target.Add(item1);
             target.Add(item2);
