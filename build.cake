@@ -37,7 +37,7 @@ var configuration = Argument("configuration", "Release");
 
 var MainRepo = "wieslawsoltes/ReactiveHistory";
 var MasterBranch = "master";
-var AssemblyInfoPath = File("./src/ReactiveHistory/Properties/AssemblyInfo.cs");
+var AssemblyInfoPath = File("./src/Shared/SharedAssemblyInfo.cs");
 var ReleasePlatform = "Any CPU";
 var ReleaseConfiguration = "Release";
 var MSBuildSolution = "./ReactiveHistory.sln";
