@@ -302,6 +302,20 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
             Assert.Equal(item2, target[2]);
             Assert.Equal(item3, target[3]);
+
+            history.Redo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(replace1, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Redo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(replace1, target[0]);
+            Assert.Equal(replace2, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
         }
 
         [Fact]
@@ -349,6 +363,19 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
             Assert.Equal(item2, target[2]);
             Assert.Equal(item3, target[3]);
+
+            history.Redo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(replace1, target[3]);
+
+            history.Redo();
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(item1, target[1]);
+            Assert.Equal(replace2, target[2]);
+            Assert.Equal(replace1, target[3]);
         }
 
         [Fact]
@@ -395,6 +422,20 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item0, target[0]);
             Assert.Equal(item1, target[1]);
             Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Redo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(replace1, target[1]);
+            Assert.Equal(item2, target[2]);
+            Assert.Equal(item3, target[3]);
+
+            history.Redo();
+            Assert.Equal(4, target.Count);
+            Assert.Equal(item0, target[0]);
+            Assert.Equal(replace1, target[1]);
+            Assert.Equal(replace2, target[2]);
             Assert.Equal(item3, target[3]);
         }
 
