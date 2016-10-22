@@ -34,11 +34,11 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReactiveProperty, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ReactiveProperty.3.0.1\lib\net45\ReactiveProperty.dll</HintPath>
+      <HintPath>..\..\packages\ReactiveProperty.3.2.0\lib\net45\ReactiveProperty.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ReactiveProperty.NET45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ReactiveProperty.3.0.1\lib\net45\ReactiveProperty.NET45.dll</HintPath>
+      <HintPath>..\..\packages\ReactiveProperty.3.2.0\lib\net45\ReactiveProperty.NET45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
