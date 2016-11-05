@@ -1,13 +1,10 @@
 ﻿<Window x:Class="ReactiveHistorySample.Avalonia.MainWindow"
         xmlns="https://github.com/avaloniaui" 
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReactiveHistorySample.Avalonia;assembly=ReactiveHistorySample.Avalonia"
         xmlns:controls="clr-namespace:ReactiveHistorySample.Avalonia.Controls;assembly=ReactiveHistorySample.Avalonia"
         xmlns:views="clr-namespace:ReactiveHistorySample.Avalonia.Views;assembly=ReactiveHistorySample.Avalonia"
         xmlns:vm="clr-namespace:ReactiveHistorySample.ViewModels;assembly=ReactiveHistorySample.ViewModels"
-        mc:Ignorable="d"
         Title="ReactiveHistorySample.Avalonia" Height="700" Width="1000"
         UseLayoutRounding="True">
     <Window.DataTemplates>
@@ -27,7 +24,7 @@
         <ListBox Grid.Column="0" Grid.Row="1" Name="shapes" Items="{Binding Shapes}">
             <ListBox.DataTemplates>
                 <DataTemplate DataType="vm:LineShapeViewModel">
-                    <TextBlock Text="{Binding Name.Value, FallbackValue=FIXME!}"/>
+                    <TextBlock Text="{Binding Name.Value}"/>
                 </DataTemplate>
             </ListBox.DataTemplates>
         </ListBox>
