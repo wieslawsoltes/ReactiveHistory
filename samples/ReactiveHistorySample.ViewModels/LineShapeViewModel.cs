@@ -27,7 +27,7 @@ namespace ReactiveHistorySample.ViewModels
         {
             Disposable = new CompositeDisposable();
 
-            var lineHistoryScope = new StackHistory();
+            var lineHistoryScope = new StackHistory().AddTo(this.Disposable);
 
             this.Name = line.ToReactivePropertyAsSynchronized(l => l.Name)
                 .SetValidateNotifyError(name => string.IsNullOrWhiteSpace(name) ? "Name can not be null or whitespace." : null)

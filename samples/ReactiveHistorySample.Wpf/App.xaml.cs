@@ -34,7 +34,7 @@ namespace ReactiveHistorySample.Wpf
 
                 // ViewModel
 
-                var history = new StackHistory();
+                var history = new StackHistory().AddTo(disposable);
                 var layerViewModel = new LayerViewModel(layer1, history).AddTo(disposable);
 
                 // Window
