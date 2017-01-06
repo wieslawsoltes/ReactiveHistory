@@ -29,7 +29,7 @@ namespace ReactiveHistorySample.ViewModels
                 .AddTo(this.Disposable);
 
             this.Shapes = layer.Shapes
-                .ToReadOnlyReactiveCollection(x => new LineShapeViewModel(x, new StackHistory()))
+                .ToReadOnlyReactiveCollection(x => new LineShapeViewModel(x, history))
                 .AddTo(this.Disposable);
 
             this.Name.ObserveWithHistory(name => layer.Name = name, layer.Name, history).AddTo(this.Disposable);
