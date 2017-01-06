@@ -52,7 +52,7 @@ namespace ReactiveHistorySample.ViewModels
             RedoCommand = new ReactiveCommand(lineHistoryScope.CanRedo, false);
             RedoCommand.Subscribe(_ => lineHistoryScope.Redo()).AddTo(this.Disposable);
 
-            ClearCommand = new ReactiveCommand(history.CanClear, false);
+            ClearCommand = new ReactiveCommand(lineHistoryScope.CanClear, false);
             ClearCommand.Subscribe(_ => lineHistoryScope.Clear()).AddTo(this.Disposable);
         }
 
