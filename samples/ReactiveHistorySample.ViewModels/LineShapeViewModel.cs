@@ -19,26 +19,41 @@ namespace ReactiveHistorySample.ViewModels
 
         public ReactiveCommand DeleteCommand { get; set; }
 
+        public ReactiveCommand UndoCommand { get; set; }
+        public ReactiveCommand RedoCommand { get; set; }
+        public ReactiveCommand ClearCommand { get; set; }
+
         public LineShapeViewModel(LineShape line, IHistory history)
         {
             Disposable = new CompositeDisposable();
+
+            var lineHistoryScope = new StackHistory().AddTo(this.Disposable);
 
             this.Name = line.ToReactivePropertyAsSynchronized(l => l.Name)
                 .SetValidateNotifyError(name => string.IsNullOrWhiteSpace(name) ? "Name can not be null or whitespace." : null)
                 .AddTo(this.Disposable);
 
-            this.Start = new ReactiveProperty<PointShapeViewModel>(new PointShapeViewModel(line.Start, history))
+            this.Start = new ReactiveProperty<PointShapeViewModel>(new PointShapeViewModel(line.Start, lineHistoryScope))
                 .SetValidateNotifyError(start => start == null ? "Point can not be null." : null)
                 .AddTo(this.Disposable);
 
-            this.End = new ReactiveProperty<PointShapeViewModel>(new PointShapeViewModel(line.End, history))
+            this.End = new ReactiveProperty<PointShapeViewModel>(new PointShapeViewModel(line.End, lineHistoryScope))
                 .SetValidateNotifyError(end => end == null ? "Point can not be null." : null)
                 .AddTo(this.Disposable);
 
-            this.Name.ObserveWithHistory(name => line.Name = name, line.Name, history).AddTo(this.Disposable);
+            this.Name.ObserveWithHistory(name => line.Name = name, line.Name, lineHistoryScope).AddTo(this.Disposable);
 
             this.DeleteCommand = new ReactiveCommand();
             this.DeleteCommand.Subscribe((x) => Delete(line, history)).AddTo(this.Disposable);
+
+            UndoCommand = new ReactiveCommand(lineHistoryScope.CanUndo, false);
+            UndoCommand.Subscribe(_ => lineHistoryScope.Undo()).AddTo(this.Disposable);
+
+            RedoCommand = new ReactiveCommand(lineHistoryScope.CanRedo, false);
+            RedoCommand.Subscribe(_ => lineHistoryScope.Redo()).AddTo(this.Disposable);
+
+            ClearCommand = new ReactiveCommand(lineHistoryScope.CanClear, false);
+            ClearCommand.Subscribe(_ => lineHistoryScope.Clear()).AddTo(this.Disposable);
         }
 
         private void Delete(LineShape line, IHistory history)

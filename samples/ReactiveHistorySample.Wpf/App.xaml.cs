@@ -34,7 +34,7 @@ namespace ReactiveHistorySample.Wpf
 
                 // ViewModel
 
-                var history = new StackHistory();
+                var history = new StackHistory().AddTo(disposable);
                 var layerViewModel = new LayerViewModel(layer1, history).AddTo(disposable);
 
                 // Window
@@ -52,15 +52,28 @@ namespace ReactiveHistorySample.Wpf
                         line = new LineShape(layer1, "line");
                         line.Start = new PointShape(point.X, point.Y, line1, "start");
                         line.End = new PointShape(point.X, point.Y, line1, "end");
-                        layer1.Shapes.AddWithHistory(line, history);
-                        history.IsPaused = true;
+                        //layer1.Shapes.AddWithHistory(line, history);
+                        layer1.Shapes.Add(line);
+                        //history.IsPaused = true;
                         layerCanvas.InvalidateVisual();
                     }
                     else
                     {
                         line.End.X = point.X;
                         line.End.Y = point.Y;
-                        history.IsPaused = false;
+                        layer1.Shapes.Remove(line);
+                        layer1.Shapes.AddWithHistory(line, history);
+                        //history.IsPaused = false;
+                        line = null;
+                        layerCanvas.InvalidateVisual();
+                    }
+                };
+
+                layerCanvas.PreviewMouseRightButtonDown += (sender, args) =>
+                {
+                    if (line != null)
+                    {
+                        layer1.Shapes.Remove(line);
                         line = null;
                         layerCanvas.InvalidateVisual();
                     }
