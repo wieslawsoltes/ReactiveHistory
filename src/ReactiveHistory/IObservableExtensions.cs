@@ -8,7 +8,7 @@ namespace ReactiveHistory
     /// <summary>
     /// Observable extension methods for the generic observable implementations.
     /// </summary>
-    public static class ObservableHistoryExtensions
+    public static class IObservableExtensions
     {
         /// <summary>
         /// Observe property changes with history.
