@@ -69,6 +69,16 @@ namespace ReactiveHistorySample.Wpf
                     }
                 };
 
+                layerCanvas.PreviewMouseRightButtonDown += (sender, args) =>
+                {
+                    if (line != null)
+                    {
+                        layer1.Shapes.Remove(line);
+                        line = null;
+                        layerCanvas.InvalidateVisual();
+                    }
+                };
+
                 layerCanvas.PreviewMouseMove += (sender, args) =>
                 {
                     var point = args.GetPosition(layerCanvas);

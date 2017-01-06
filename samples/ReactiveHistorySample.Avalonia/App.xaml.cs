@@ -91,6 +91,15 @@ namespace ReactiveHistorySample.Avalonia
                             layerCanvas.InvalidateVisual();
                         }
                     }
+                    else if (args.MouseButton == MouseButton.Right)
+                    {
+                        if (line != null)
+                        {
+                            layer1.Shapes.Remove(line);
+                            line = null;
+                            layerCanvas.InvalidateVisual();
+                        }
+                    }
                 };
 
                 layerCanvas.PointerMoved += (sender, args) =>
