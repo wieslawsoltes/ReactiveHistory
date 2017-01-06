@@ -33,11 +33,13 @@ namespace ReactiveHistorySample.ViewModels
                 .SetValidateNotifyError(name => string.IsNullOrWhiteSpace(name) ? "Name can not be null or whitespace." : null)
                 .AddTo(this.Disposable);
 
-            this.Start = new ReactiveProperty<PointShapeViewModel>(new PointShapeViewModel(line.Start, lineHistoryScope))
+            var startInitialValue = new PointShapeViewModel(line.Start, lineHistoryScope).AddTo(this.Disposable);
+            this.Start = new ReactiveProperty<PointShapeViewModel>(startInitialValue)
                 .SetValidateNotifyError(start => start == null ? "Point can not be null." : null)
                 .AddTo(this.Disposable);
 
-            this.End = new ReactiveProperty<PointShapeViewModel>(new PointShapeViewModel(line.End, lineHistoryScope))
+            var endInitialValue = new PointShapeViewModel(line.End, lineHistoryScope).AddTo(this.Disposable);
+            this.End = new ReactiveProperty<PointShapeViewModel>(endInitialValue)
                 .SetValidateNotifyError(end => end == null ? "Point can not be null." : null)
                 .AddTo(this.Disposable);
 
