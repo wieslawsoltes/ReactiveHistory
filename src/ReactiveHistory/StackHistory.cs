@@ -10,7 +10,7 @@ namespace ReactiveHistory
     /// <summary>
     /// Undo/redo stack based action history.
     /// </summary>
-    public class StackHistory : IHistory
+    public class StackHistory : IHistory, IDisposable
     {
         private readonly Subject<bool> _canUndo;
         private readonly Subject<bool> _canRedo;
@@ -135,6 +135,18 @@ namespace ReactiveHistory
             _canUndo.OnNext(false);
             _canRedo.OnNext(false);
             _canClear.OnNext(false);
+        }
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Undos.Clear();
+            Redos.Clear();
+            Undos = null;
+            Redos = null;
+            _canUndo.Dispose();
+            _canRedo.Dispose();
+            _canClear.Dispose();
         }
     }
 }

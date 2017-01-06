@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Wiesław Šoltés. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Linq;
 using Xunit;
 
@@ -23,6 +24,32 @@ namespace ReactiveHistory.UnitTests
                 Assert.Equal(new bool[] { }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanClears.ToArray());
+            }
+        }
+
+        [Fact]
+        [Trait("ReactiveHistory", "StackHistory")]
+        public void Dispose_Should_Release_Allocated_Resources()
+        {
+            var target = new StackHistory();
+
+            using (var helper = new HistoryHelper(target))
+            {
+                target.Snapshot(() => { }, () => { });
+                target.Snapshot(() => { }, () => { });
+                var result = target.Undo();
+                Assert.Equal(1, target.Undos.Count);
+                Assert.Equal(1, target.Redos.Count);
+                Assert.Equal(true, result);
+
+                target.Dispose();
+
+                Assert.Null(target.Undos);
+                Assert.Null(target.Redos);
+
+                Assert.Throws(typeof(ObjectDisposedException), () => target.CanUndo.Subscribe(_ => { }));
+                Assert.Throws(typeof(ObjectDisposedException), () => target.CanRedo.Subscribe(_ => { }));
+                Assert.Throws(typeof(ObjectDisposedException), () => target.CanClear.Subscribe(_ => { }));
             }
         }
 
@@ -167,7 +194,7 @@ namespace ReactiveHistory.UnitTests
             var target = new StackHistory();
 
             target.Snapshot(
-                undo: () => Assert.True(target.IsPaused), 
+                undo: () => Assert.True(target.IsPaused),
                 redo: () => Assert.True(target.IsPaused));
 
             Assert.False(target.IsPaused);
