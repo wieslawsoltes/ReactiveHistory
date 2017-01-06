@@ -19,6 +19,10 @@ namespace ReactiveHistorySample.ViewModels
 
         public ReactiveCommand DeleteCommand { get; set; }
 
+        public ReactiveCommand UndoCommand { get; set; }
+        public ReactiveCommand RedoCommand { get; set; }
+        public ReactiveCommand ClearCommand { get; set; }
+
         public LineShapeViewModel(LineShape line, IHistory history)
         {
             Disposable = new CompositeDisposable();
@@ -39,6 +43,15 @@ namespace ReactiveHistorySample.ViewModels
 
             this.DeleteCommand = new ReactiveCommand();
             this.DeleteCommand.Subscribe((x) => Delete(line, history)).AddTo(this.Disposable);
+
+            UndoCommand = new ReactiveCommand(history.CanUndo, false);
+            UndoCommand.Subscribe(_ => history.Undo()).AddTo(this.Disposable);
+
+            RedoCommand = new ReactiveCommand(history.CanRedo, false);
+            RedoCommand.Subscribe(_ => history.Redo()).AddTo(this.Disposable);
+
+            ClearCommand = new ReactiveCommand(history.CanClear, false);
+            ClearCommand.Subscribe(_ => history.Clear()).AddTo(this.Disposable);
         }
 
         private void Delete(LineShape line, IHistory history)
