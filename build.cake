@@ -4,14 +4,12 @@
 
 #addin "nuget:?package=Polly&version=4.2.0"
 #addin "nuget:?package=NuGet.Core&version=2.12.0"
-#addin "nuget:?package=Cake.DocFx&version=0.1.6"
 
 ///////////////////////////////////////////////////////////////////////////////
 // TOOLS
 ///////////////////////////////////////////////////////////////////////////////
 
 #tool "nuget:?package=xunit.runner.console&version=2.1.0"
-#tool "nuget:?package=docfx.msbuild&version=2.4.0"
 
 ///////////////////////////////////////////////////////////////////////////////
 // USINGS
@@ -42,7 +40,6 @@ var ReleasePlatform = "Any CPU";
 var ReleaseConfiguration = "Release";
 var MSBuildSolution = "./ReactiveHistory.sln";
 var XBuildSolution = "./ReactiveHistory.sln";
-var DocFxProject = "./docs/docfx.json";
 
 ///////////////////////////////////////////////////////////////////////////////
 // PARAMETERS
@@ -92,14 +89,7 @@ if (isRunningOnAppVeyor)
 var artifactsDir = (DirectoryPath)Directory("./artifacts");
 var testResultsDir = artifactsDir.Combine("test-results");
 var nugetRoot = artifactsDir.Combine("nuget");
-var zipRoot = artifactsDir.Combine("zip");
-var docsRoot = artifactsDir.Combine("docs");
-var docsSiteRoot = docsRoot.Combine("_site");
-
 var dirSuffix = isPlatformAnyCPU ? configuration : platform + "/" + configuration;
-
-var zipDocsSiteArtifacts = zipRoot.CombineWithFilePath("ReactiveHistory-Docs-" + version + ".zip");
-
 var buildDirs = 
     GetDirectories("./src/**/bin/" + dirSuffix) + 
     GetDirectories("./src/**/obj/" + dirSuffix) + 
@@ -233,9 +223,6 @@ Task("Clean")
     CleanDirectory(artifactsDir);
     CleanDirectory(testResultsDir);
     CleanDirectory(nugetRoot);
-    CleanDirectory(zipRoot);
-    CleanDirectory(docsRoot);
-    CleanDirectory(docsSiteRoot);
 });
 
 Task("Restore-NuGet-Packages")
@@ -320,23 +307,6 @@ Task("Run-Unit-Tests")
     }
 });
 
-Task("Create-Docs")
-    .IsDependentOn("Run-Unit-Tests")
-    .Does(() =>
-{
-    DocFxMetadata(DocFxProject);
-    DocFxBuild(DocFxProject, new DocFxBuildSettings() {
-        OutputPath = docsRoot
-    });
-});
-
-Task("Zip-Files")
-    .IsDependentOn("Create-Docs")
-    .Does(() =>
-{
-    Zip(docsSiteRoot, zipDocsSiteArtifacts);
-});
-
 Task("Create-NuGet-Packages")
     .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
@@ -345,17 +315,6 @@ Task("Create-NuGet-Packages")
     {
         NuGetPack(nuspec);
     }
-});
-
-Task("Publish-Docs")
-    .IsDependentOn("Create-Docs")
-    .WithCriteria(() => !isLocalBuild)
-    .WithCriteria(() => !isPullRequest)
-    .WithCriteria(() => isMainRepo)
-    .WithCriteria(() => isMasterBranch)
-    .WithCriteria(() => isNuGetRelease)
-    .Does(() =>
-{
 });
 
 Task("Publish-MyGet")
@@ -431,15 +390,12 @@ Task("Publish-NuGet")
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Package")
-  .IsDependentOn("Zip-Files")
   .IsDependentOn("Create-NuGet-Packages");
 
 Task("Default")
   .IsDependentOn("Package");
 
 Task("AppVeyor")
-  .IsDependentOn("Zip-Files")
-  .IsDependentOn("Publish-Docs")
   .IsDependentOn("Publish-MyGet")
   .IsDependentOn("Publish-NuGet");
 
