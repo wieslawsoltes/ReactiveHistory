@@ -1,31 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistory", "src\ReactiveHistory\ReactiveHistory.csproj", "{9832484C-4BBE-43E9-B40E-9F57AF68A185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistory", "src\ReactiveHistory\ReactiveHistory.csproj", "{9832484C-4BBE-43E9-B40E-9F57AF68A185}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{15FC57FA-8C2F-43AF-82D4-F53A1AA3A7EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E982B451-CC08-4731-B035-E0E1B38B81A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}"
-	ProjectSection(SolutionItems) = preProject
-		.travis.yml = .travis.yml
-		appveyor.yml = appveyor.yml
-		build.cake = build.cake
-		build.ps1 = build.ps1
-		build.sh = build.sh
-		NuGet.Config = NuGet.Config
-	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistory.UnitTests", "tests\ReactiveHistory.UnitTests\ReactiveHistory.UnitTests.csproj", "{71BA2D95-53E6-42D4-ADAA-CF34C77494F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistory.UnitTests", "tests\ReactiveHistory.UnitTests\ReactiveHistory.UnitTests.csproj", "{71BA2D95-53E6-42D4-ADAA-CF34C77494F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{4A600469-8200-4BDD-AA90-6B34B2D1CD2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Models", "samples\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj", "{9DDD104E-C3D1-43E1-84C1-D332E89927FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistorySample.Models", "samples\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj", "{9DDD104E-C3D1-43E1-84C1-D332E89927FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.ViewModels", "samples\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj", "{A3C460F7-DF9E-4D6B-8CF3-A1E668C7F2F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistorySample.ViewModels", "samples\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj", "{A3C460F7-DF9E-4D6B-8CF3-A1E668C7F2F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Wpf", "samples\ReactiveHistorySample.Wpf\ReactiveHistorySample.Wpf.csproj", "{3F0AC124-875C-4F92-8FAE-FF201C271CCF}"
 EndProject
@@ -34,6 +26,30 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{E5AE18B0-5147-4FDD-B3A4-3EB695D7C444}"
 	ProjectSection(SolutionItems) = preProject
 		src\Shared\SharedAssemblyInfo.cs = src\Shared\SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+		appveyor.yml = appveyor.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cake", "cake", "{70D70406-8BB2-4ACF-A39C-CCCFC9AA96E8}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		build.ps1 = build.ps1
+		build.sh = build.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{04528DEE-83A0-41B8-B35A-6026C20AC281}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{24184708-8950-4B74-9CBB-BB68291FF9C6}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.TXT = LICENSE.TXT
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -101,5 +117,9 @@ Global
 		{A3C460F7-DF9E-4D6B-8CF3-A1E668C7F2F1} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 		{3F0AC124-875C-4F92-8FAE-FF201C271CCF} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 		{342F4B0A-2EEB-434D-B4FC-8E76DA474729} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
+		{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
+		{70D70406-8BB2-4ACF-A39C-CCCFC9AA96E8} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
+		{04528DEE-83A0-41B8-B35A-6026C20AC281} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
+		{24184708-8950-4B74-9CBB-BB68291FF9C6} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 	EndGlobalSection
 EndGlobal
