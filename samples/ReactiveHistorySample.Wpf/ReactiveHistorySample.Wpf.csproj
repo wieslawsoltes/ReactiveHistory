@@ -128,14 +128,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <PackageReference Include="ReactiveProperty" Version="3.2.0" />
-    <PackageReference Include="System.Reactive" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Core" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Interfaces" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Linq" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.PlatformServices" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Windows.Threading" Version="3.0.0" />
-  </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
   <Import Project="$(MSBuildThisFileDirectory)..\Shared\nuget.workaround.targets" />
 </Project>

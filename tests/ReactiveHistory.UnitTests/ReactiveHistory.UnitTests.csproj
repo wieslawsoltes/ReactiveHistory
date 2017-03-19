@@ -27,23 +27,10 @@
   <ItemGroup>
     <Compile Include="**\*.cs" Exclude="obj\**" />
   </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\XUnit.props" />
   <ItemGroup>
     <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Reactive" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Core" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Interfaces" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.Linq" Version="3.0.0" />
-    <PackageReference Include="System.Reactive.PlatformServices" Version="3.0.0" />
-    <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.abstractions" Version="2.0.1" />
-    <PackageReference Include="xunit.assert" Version="2.2.0" />
-    <PackageReference Include="xunit.core" Version="2.2.0" />
-    <PackageReference Include="xunit.extensibility.core" Version="2.2.0" />
-    <PackageReference Include="xunit.extensibility.execution" Version="2.2.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-    <PackageReference Condition="'$(TargetFramework)' == 'netcoreapp1.1'" Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
