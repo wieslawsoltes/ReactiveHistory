@@ -4,6 +4,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/9mgwu7obsuh89kys?svg=true)](https://ci.appveyor.com/project/wieslawsoltes/reactivehistory)
 [![Build Status](https://travis-ci.org/wieslawsoltes/ReactiveHistory.svg?branch=master)](https://travis-ci.org/wieslawsoltes/ReactiveHistory)
+[![CircleCI](https://circleci.com/gh/wieslawsoltes/ReactiveHistory/tree/master.svg?style=svg)](https://circleci.com/gh/wieslawsoltes/ReactiveHistory/tree/master)
 
 [![NuGet](https://img.shields.io/nuget/v/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory) [![MyGet](https://img.shields.io/myget/reactivehistory-nightly/vpre/ReactiveHistory.svg?label=myget)](https://www.myget.org/gallery/reactivehistory-nightly) 
 
