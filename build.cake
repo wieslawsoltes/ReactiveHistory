@@ -175,10 +175,7 @@ var nuspecNuGetHistory = new NuGetPackSettings()
     {
         // netstandard1.1
         new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard1.1/" + "ReactiveHistory.dll", Target = "lib/netstandard1.1" },
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard1.1/" + "ReactiveHistory.xml", Target = "lib/netstandard1.1" },
-        // net45
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/net45/" + "ReactiveHistory.dll", Target = "lib/net45" },
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/net45/" + "ReactiveHistory.xml", Target = "lib/net45" }
+        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard1.1/" + "ReactiveHistory.xml", Target = "lib/netstandard1.1" }
     },
     BasePath = Directory("./"),
     OutputDirectory = nugetRoot
