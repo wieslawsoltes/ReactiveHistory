@@ -11,3 +11,6 @@ jobs:
       - checkout
       - run: dotnet restore src/ReactiveHistory
       - run: dotnet build src/ReactiveHistory/ReactiveHistory.csproj
+    notify:
+      webhooks:
+        - url: https://webhooks.gitter.im/e/4ca4750799464a669fb4
