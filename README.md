@@ -119,7 +119,7 @@ git submodule update --init --recursive
 
 ### Build using IDE
 
-* [Visual Studio Community 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx) for `Windows` builds.
+* [Visual Studio Community 2017](https://www.visualstudio.com/pl/vs/community/) for `Windows` builds.
 * [MonoDevelop](http://www.monodevelop.com/) for `Linux` builds.
 
 Open `ReactiveHistory.sln` in selected IDE and run `Build` command.
