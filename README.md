@@ -152,11 +152,11 @@ You can install the package like this:
 
 ### Package Dependencies
 
-* System.Reactive
-* System.Reactive.Core
-* System.Reactive.Interfaces
-* System.Reactive.Linq
-* System.Reactive.PlatformServices
+* [System.Reactive](https://www.nuget.org/packages/System.Reactive/)
+* [System.Reactive.Core](https://www.nuget.org/packages/System.Reactive.Core/)
+* [System.Reactive.Interfaces](https://www.nuget.org/packages/System.Reactive.Interfaces/)
+* [System.Reactive.Linq](https://www.nuget.org/packages/System.Reactive.Linq/)
+* [System.Reactive.PlatformServices](https://www.nuget.org/packages/System.Reactive.PlatformServices/)
 
 ### Package Sources
 
