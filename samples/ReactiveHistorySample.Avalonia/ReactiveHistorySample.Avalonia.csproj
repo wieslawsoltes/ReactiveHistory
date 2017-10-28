@@ -1,95 +1,40 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{342F4B0A-2EEB-434D-B4FC-8E76DA474729}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ReactiveHistorySample.Avalonia</RootNamespace>
-    <AssemblyName>ReactiveHistorySample.Avalonia</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Views\LineShapeView.xaml.cs">
-      <DependentUpon>LineShapeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PointShapeView.xaml.cs">
-      <DependentUpon>PointShapeView.xaml</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="App.xaml" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="MainWindow.xaml" />
-    <Compile Include="Controls\LayerCanvas.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj">
-      <Project>{9832484c-4bbe-43e9-b40e-9f57af68a185}</Project>
-      <Name>ReactiveHistory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj">
-      <Project>{9ddd104e-c3d1-43e1-84c1-d332e89927fb}</Project>
-      <Name>ReactiveHistorySample.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj">
-      <Project>{a3c460f7-df9e-4d6b-8cf3-a1e668c7f2f1}</Project>
-      <Name>ReactiveHistorySample.ViewModels</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\PointShapeView.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\LineShapeView.xaml" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.props" />
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.Desktop.props" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <RuntimeIdentifiers>win7-x64;ubuntu.14.04-x64;osx.10.12-x64</RuntimeIdentifiers>
+        <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+        <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+        <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="**\*.cs" Exclude="obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <EmbeddedResource Include="**\*.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="2.0.0" />
+        <PackageReference Include="Microsoft.NETCore.DotNetHostPolicy" Version="2.0.0" />
+    </ItemGroup>
+
+    <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
+    <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
+    <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.props" />
+    <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.Desktop.props" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
+        <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj" />
+        <ProjectReference Include="..\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj" />
+    </ItemGroup>
+
 </Project>
