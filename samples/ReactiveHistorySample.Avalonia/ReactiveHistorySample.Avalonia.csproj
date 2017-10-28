@@ -1,40 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-        <RuntimeIdentifiers>win7-x64;ubuntu.14.04-x64;osx.10.12-x64</RuntimeIdentifiers>
-        <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-        <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
-        <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeIdentifiers>win7-x64;ubuntu.14.04-x64;osx.10.12-x64</RuntimeIdentifiers>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="**\*.cs" Exclude="obj\**" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="**\*.cs" Exclude="obj\**" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <Compile Update="**\*.xaml.cs">
-            <DependentUpon>%(Filename)</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <EmbeddedResource Include="**\*.xaml" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="**\*.xaml" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="2.0.0" />
-        <PackageReference Include="Microsoft.NETCore.DotNetHostPolicy" Version="2.0.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="2.0.0" />
+    <PackageReference Include="Microsoft.NETCore.DotNetHostPolicy" Version="2.0.0" />
+  </ItemGroup>
 
-    <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
-    <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
-    <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.props" />
-    <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.Desktop.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.Desktop.props" />
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
-        <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj" />
-        <ProjectReference Include="..\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
+    <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj" />
+    <ProjectReference Include="..\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj" />
+  </ItemGroup>
 
 </Project>
