@@ -10,7 +10,9 @@ jobs:
     steps:
       - checkout
       - run: dotnet restore src/ReactiveHistory
-      - run: dotnet build src/ReactiveHistory/ReactiveHistory.csproj
+      - run: dotnet build src/ReactiveHistory/ReactiveHistory.csproj -c Release -f netstandard2.0
+      - run: dotnet restore tests/ReactiveHistory.UnitTests
+      - run: dotnet test tests/ReactiveHistory.UnitTests/ReactiveHistory.UnitTests.csproj -c Release -f netcoreapp2.0
     notify:
       webhooks:
         - url: https://webhooks.gitter.im/e/4ca4750799464a669fb4
