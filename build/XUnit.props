@@ -7,6 +7,19 @@
     <PackageReference Include="xunit.extensibility.core" Version="2.3.1" />
     <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-    <PackageReference Condition="'$(TargetFramework)' == 'netcoreapp1.1'" Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Condition="'$(TargetFramework)' == 'netcoreapp2.0'" Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
   </ItemGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Target Name="ForceGenerationOfBindingRedirects"
+          AfterTargets="ResolveAssemblyReferences"
+          BeforeTargets="GenerateBindingRedirects"
+          Condition="'$(AutoGenerateBindingRedirects)' == 'true'">
+    <PropertyGroup>
+      <!-- Needs to be set in a target because it has to be set after the initial evaluation in the common targets -->
+      <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    </PropertyGroup>
+  </Target>
+  <Import Project="$(MSBuildThisFileDirectory)\NetFX.props" />
 </Project>
