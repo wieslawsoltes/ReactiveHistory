@@ -93,12 +93,12 @@ var testResultsDir = artifactsDir.Combine("test-results");
 var nugetRoot = artifactsDir.Combine("nuget");
 var dirSuffix = isPlatformAnyCPU ? configuration : platform + "/" + configuration;
 var buildDirs = 
-    GetDirectories("./src/**/bin/" + dirSuffix) + 
-    GetDirectories("./src/**/obj/" + dirSuffix) + 
-    GetDirectories("./samples/**/bin/" + dirSuffix) + 
-    GetDirectories("./samples/**/obj/" + dirSuffix) +
-    GetDirectories("./tests/**/bin/" + dirSuffix) + 
-    GetDirectories("./tests/**/obj/" + dirSuffix);
+    GetDirectories("./src/**/bin/**") + 
+    GetDirectories("./src/**/obj/**") + 
+    GetDirectories("./samples/**/bin/**") + 
+    GetDirectories("./samples/**/obj/**") + 
+    GetDirectories("./tests/**/bin/**") + 
+    GetDirectories("./tests/**/obj/**");
 
 ///////////////////////////////////////////////////////////////////////////////
 // NUGET NUSPECS
