@@ -21,15 +21,11 @@
     <EmbeddedResource Include="**\*.xaml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="2.0.0" />
-    <PackageReference Include="Microsoft.NETCore.DotNetHostPolicy" Version="2.0.0" />
-  </ItemGroup>
-
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\NETCore.props" />
   <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
   <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.props" />
   <Import Project="$(MSBuildThisFileDirectory)..\..\build\Avalonia.Desktop.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />

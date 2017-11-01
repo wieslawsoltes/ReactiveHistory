@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistory", "src\ReactiveHistory\ReactiveHistory.csproj", "{9832484C-4BBE-43E9-B40E-9F57AF68A185}"
 EndProject
@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistorySample.ViewM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Wpf", "samples\ReactiveHistorySample.Wpf\ReactiveHistorySample.Wpf.csproj", "{3F0AC124-875C-4F92-8FAE-FF201C271CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Avalonia", "samples\ReactiveHistorySample.Avalonia\ReactiveHistorySample.Avalonia.csproj", "{342F4B0A-2EEB-434D-B4FC-8E76DA474729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistorySample.Avalonia", "samples\ReactiveHistorySample.Avalonia\ReactiveHistorySample.Avalonia.csproj", "{342F4B0A-2EEB-434D-B4FC-8E76DA474729}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{E5AE18B0-5147-4FDD-B3A4-3EB695D7C444}"
 	ProjectSection(SolutionItems) = preProject
@@ -56,6 +56,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{1C68A69B
 	ProjectSection(SolutionItems) = preProject
 		build\Avalonia.Desktop.props = build\Avalonia.Desktop.props
 		build\Avalonia.props = build\Avalonia.props
+		build\NETCore.props = build\NETCore.props
+		build\NetFX.props = build\NetFX.props
 		build\ReactiveProperty.props = build\ReactiveProperty.props
 		build\Rx.props = build\Rx.props
 		build\XUnit.props = build\XUnit.props
@@ -131,5 +133,8 @@ Global
 		{04528DEE-83A0-41B8-B35A-6026C20AC281} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{24184708-8950-4B74-9CBB-BB68291FF9C6} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{1C68A69B-E16C-4603-9DD3-DDB4E4393EDF} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4AF6934B-C008-472A-9E35-8EBA7CAEA3D8}
 	EndGlobalSection
 EndGlobal
