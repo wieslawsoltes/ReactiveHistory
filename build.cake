@@ -44,6 +44,40 @@ var MSBuildSolution = "./ReactiveHistory.sln";
 var UnitTestsFramework = "net461";
 
 ///////////////////////////////////////////////////////////////////////////////
+// .NET Core Projects
+///////////////////////////////////////////////////////////////////////////////
+
+var netCoreAppsRoot= "./samples";
+var netCoreApps = new string[] { "ReactiveHistorySample.Avalonia" };
+var netCoreProjects = netCoreApps.Select(name => 
+    new {
+        Path = string.Format("{0}/{1}", netCoreAppsRoot, name),
+        Name = name,
+        Framework = XmlPeek(string.Format("{0}/{1}/{1}.csproj", netCoreAppsRoot, name), "//*[local-name()='TargetFramework']/text()"),
+        Runtimes = XmlPeek(string.Format("{0}/{1}/{1}.csproj", netCoreAppsRoot, name), "//*[local-name()='RuntimeIdentifiers']/text()").Split(';')
+    }).ToList();
+
+///////////////////////////////////////////////////////////////////////////////
+// .NET Core UnitTests
+///////////////////////////////////////////////////////////////////////////////
+
+var netCoreUnitTestsRoot= "./tests";
+var netCoreUnitTests = new string[] { 
+    "ReactiveHistory.UnitTests"
+};
+var netCoreUnitTestsProjects = netCoreUnitTests.Select(name => 
+    new {
+        Name = name,
+        Path = string.Format("{0}/{1}", netCoreUnitTestsRoot, name),
+        File = string.Format("{0}/{1}/{1}.csproj", netCoreUnitTestsRoot, name)
+    }).ToList();
+var netCoreUnitTestsFrameworks = new List<string>() { "netcoreapp2.0" };
+if (IsRunningOnWindows())
+{
+    netCoreUnitTestsFrameworks.Add("net461");
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // PARAMETERS
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -231,7 +265,7 @@ Information("IsMyGetRelease: " + isMyGetRelease);
 Information("IsNuGetRelease: " + isNuGetRelease);
 
 ///////////////////////////////////////////////////////////////////////////////
-// TASKS
+// TASKS: VISUAL STUDIO
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Clean")
@@ -271,19 +305,6 @@ Task("Restore-NuGet-Packages")
         });
 });
 
-void DotNetCoreBuild()
-{
-    DotNetCoreRestore("./src/ReactiveHistory");
-    DotNetBuild("./src/ReactiveHistory");
-}
-
-Task("DotNetCoreBuild")
-    .IsDependentOn("Clean")
-    .Does(() => 
-{
-    DotNetCoreBuild();
-});
-
 Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
@@ -297,40 +318,9 @@ Task("Build")
             settings.SetVerbosity(Verbosity.Minimal);
         });
     }
-    else
-    {
-        DotNetCoreBuild();
-    }
-});
-
-void RunCoreTest(string dir, bool isRunningOnWindows, bool net461Only)
-{
-    Information("Running tests from " + dir);
-    DotNetCoreRestore(dir);
-    var frameworks = new List<string>() { "netcoreapp2.0" };
-    if (isRunningOnWindows)
-        frameworks.Add("net461");
-    foreach(var fw in frameworks)
-    {
-        if(fw != "net461" && net461Only)
-            continue;
-        Information("Running for " + fw);
-        DotNetCoreTest(System.IO.Path.Combine(
-            dir, 
-            System.IO.Path.GetFileName(dir) + ".csproj"),
-            new DotNetCoreTestSettings { Framework = fw });
-    }
-}
-
-Task("Run-Net-Core-Unit-Tests")
-    .IsDependentOn("Clean")
-    .Does(() => 
-{
-    RunCoreTest("./tests/ReactiveHistory.UnitTests", isRunningOnWindows, false);
 });
 
 Task("Run-Unit-Tests")
-    .IsDependentOn("Run-Net-Core-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
@@ -432,6 +422,54 @@ Task("Publish-NuGet")
 });
 
 ///////////////////////////////////////////////////////////////////////////////
+// TASKS: .NET Core
+///////////////////////////////////////////////////////////////////////////////
+
+Task("Restore-NetCore")
+    .IsDependentOn("Clean")
+    .Does(() =>
+{
+    foreach (var project in netCoreProjects)
+    {
+        DotNetCoreRestore(project.Path);
+    }
+});
+
+Task("Run-Unit-Tests-NetCore")
+    .IsDependentOn("Clean")
+    .Does(() => 
+{
+    foreach (var project in netCoreUnitTestsProjects)
+    {
+        DotNetCoreRestore(project.Path);
+        foreach(var framework in netCoreUnitTestsFrameworks)
+        {
+            Information("Running tests for: {0}, framework: {1}", project.Name, framework);
+            DotNetCoreTest(project.File, new DotNetCoreTestSettings {
+                Configuration = configuration,
+                Framework = framework
+            });
+        }
+    }
+});
+
+Task("Build-NetCore")
+    .IsDependentOn("Restore-NetCore")
+    .Does(() => 
+{
+    foreach (var project in netCoreProjects)
+    {
+        Information("Building: {0}", project.Name);
+        DotNetCoreBuild(project.Path, new DotNetCoreBuildSettings {
+            Configuration = configuration,
+            MSBuildSettings = new DotNetCoreMSBuildSettings() {
+                MaxCpuCount = 0
+            }
+        });
+    }
+});
+
+///////////////////////////////////////////////////////////////////////////////
 // TARGETS
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -439,20 +477,17 @@ Task("Package")
   .IsDependentOn("Create-NuGet-Packages");
 
 Task("Default")
-    .Does(() =>
-{
-    if (isRunningOnWindows)
-        RunTarget("Package");
-    else
-        RunTarget("Run-Net-Core-Unit-Tests");
-});
+  .IsDependentOn("Run-Unit-Tests");
 
 Task("AppVeyor")
+  .IsDependentOn("Run-Unit-Tests-NetCore")
+  .IsDependentOn("Build-NetCore")
   .IsDependentOn("Publish-MyGet")
   .IsDependentOn("Publish-NuGet");
 
 Task("Travis")
-  .IsDependentOn("Run-Net-Core-Unit-Tests");
+  .IsDependentOn("Run-Unit-Tests-NetCore")
+  .IsDependentOn("Build-NetCore");
 
 ///////////////////////////////////////////////////////////////////////////////
 // EXECUTE
