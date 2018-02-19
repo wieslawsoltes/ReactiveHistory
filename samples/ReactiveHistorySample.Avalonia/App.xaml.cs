@@ -13,7 +13,6 @@ using ReactiveHistory;
 using ReactiveHistorySample.Avalonia.Controls;
 using ReactiveHistorySample.Models;
 using ReactiveHistorySample.ViewModels;
-using Serilog;
 
 namespace ReactiveHistorySample.Avalonia
 {
@@ -25,13 +24,15 @@ namespace ReactiveHistorySample.Avalonia
             base.Initialize();
         }
 
+        public static AppBuilder BuildAvaloniaApp()
+            => AppBuilder.Configure<App>()
+                         .UsePlatformDetect()
+                         .LogToDebug();
+
         static void Main(string[] args)
         {
-            InitializeLogging();
-            var app = new App();
-            AppBuilder.Configure(app)
-                .UsePlatformDetect()
-                .SetupWithoutStarting();
+            var appBuilder = BuildAvaloniaApp().SetupWithoutStarting();
+            var app = appBuilder.Instance as App;
             app.Start();
         }
 
@@ -125,16 +126,6 @@ namespace ReactiveHistorySample.Avalonia
         {
 #if DEBUG
             DevTools.Attach(window);
-#endif
-        }
-
-        private static void InitializeLogging()
-        {
-#if DEBUG
-            SerilogLogger.Initialize(new LoggerConfiguration()
-                .MinimumLevel.Warning()
-                .WriteTo.Trace(outputTemplate: "{Area}: {Message}")
-                .CreateLogger());
 #endif
         }
     }
