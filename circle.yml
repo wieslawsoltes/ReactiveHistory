@@ -9,10 +9,13 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
     steps:
       - checkout
-      - run: dotnet restore src/ReactiveHistory
-      - run: dotnet build src/ReactiveHistory/ReactiveHistory.csproj -c Release -f netstandard2.1
-      - run: dotnet restore tests/ReactiveHistory.UnitTests
-      - run: dotnet test tests/ReactiveHistory.UnitTests/ReactiveHistory.UnitTests.csproj -c Release -f netcoreapp2.1
-    notify:
-      webhooks:
-        - url: https://webhooks.gitter.im/e/4ca4750799464a669fb4
+      - run:
+          name: Install
+          command: |
+            dotnet --info
+            dotnet tool install -g Cake.Tool --version 0.30.0
+      - run:
+          name: Build
+          command: |
+            export PATH="$PATH:$HOME/.dotnet/tools"
+            dotnet cake build.cake --target="CircleCI" --platform="Any CPU" --configuration="Release"
