@@ -38,8 +38,8 @@ namespace ReactiveHistory
                     {
                         var undoValue = previous;
                         var redoValue = next;
-                        Action undo = () => update(undoValue);
-                        Action redo = () => update(redoValue);
+                        void undo() => update(undoValue);
+                        void redo() => update(redoValue);
                         history.Snapshot(undo, redo);
                     }
                     previous = next;

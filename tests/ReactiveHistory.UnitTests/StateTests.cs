@@ -25,9 +25,10 @@ namespace ReactiveHistory.UnitTests
         [Trait("ReactiveHistory", "State")]
         public void Constructor_Should_Set_Undo_And_Redo_Fields()
         {
-            Action undo = () => { };
-            Action redo = () => { };
-
+            void undo()
+            { }
+            void redo()
+            { }
             var target = new State(undo, redo);
             Assert.Equal(undo, target.Undo);
             Assert.Equal(redo, target.Redo);

@@ -30,10 +30,10 @@ namespace ReactiveHistory
                 throw new ArgumentNullException(nameof(history));
 
             int index = source.Count;
-            Action redo = () => source.Insert(index, item);
-            Action undo = () => source.RemoveAt(index);
+            void redo() => source.Insert(index, item);
+            void undo() => source.RemoveAt(index);
             history.Snapshot(undo, redo);
-            redo.Invoke();
+            redo();
         }
 
         /// <summary>
@@ -58,10 +58,10 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            Action redo = () => source.Insert(index, item);
-            Action undo = () => source.RemoveAt(index);
+            void redo() => source.Insert(index, item);
+            void undo() => source.RemoveAt(index);
             history.Snapshot(undo, redo);
-            redo.Invoke();
+            redo();
         }
 
         /// <summary>
@@ -88,10 +88,10 @@ namespace ReactiveHistory
 
             var oldValue = source[index];
             var newValue = item;
-            Action redo = () => source[index] = newValue;
-            Action undo = () => source[index] = oldValue;
+            void redo() => source[index] = newValue;
+            void undo() => source[index] = oldValue;
             history.Snapshot(undo, redo);
-            redo.Invoke();
+            redo();
         }
 
         /// <summary>
@@ -113,10 +113,10 @@ namespace ReactiveHistory
                 throw new ArgumentNullException(nameof(history));
 
             int index = source.IndexOf(item);
-            Action redo = () => source.RemoveAt(index);
-            Action undo = () => source.Insert(index, item);
+            void redo() => source.RemoveAt(index);
+            void undo() => source.Insert(index, item);
             history.Snapshot(undo, redo);
-            redo.Invoke();
+            redo();
         }
 
         /// <summary>
@@ -138,10 +138,10 @@ namespace ReactiveHistory
                 throw new ArgumentNullException(nameof(history));
 
             var item = source[index];
-            Action redo = () => source.RemoveAt(index);
-            Action undo = () => source.Insert(index, item);
+            void redo() => source.RemoveAt(index);
+            void undo() => source.Insert(index, item);
             history.Snapshot(undo, redo);
-            redo.Invoke();
+            redo();
         }
 
         /// <summary>
@@ -161,23 +161,23 @@ namespace ReactiveHistory
             if (source.Count > 0)
             {
                 var items = source.ToArray();
-                Action redo = () =>
+                void redo()
                 {
                     foreach (var item in items)
                     {
                         source.Remove(item);
                     }
-                };
-                Action undo = () =>
+                }
+                void undo()
                 {
                     foreach (var item in items)
                     {
                         source.Add(item);
                     }
-                };
+                }
 
                 history.Snapshot(undo, redo);
-                redo.Invoke();
+                redo();
             }
         }
     }
