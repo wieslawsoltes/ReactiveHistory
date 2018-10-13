@@ -71,7 +71,7 @@ var netCoreUnitTestsProjects = netCoreUnitTests.Select(name =>
         Path = string.Format("{0}/{1}", netCoreUnitTestsRoot, name),
         File = string.Format("{0}/{1}/{1}.csproj", netCoreUnitTestsRoot, name)
     }).ToList();
-var netCoreUnitTestsFrameworks = new List<string>() { "netcoreapp2.0" };
+var netCoreUnitTestsFrameworks = new List<string>() { "netcoreapp2.1" };
 if (IsRunningOnWindows())
 {
     netCoreUnitTestsFrameworks.Add("net461");
