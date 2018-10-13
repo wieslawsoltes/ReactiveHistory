@@ -29,15 +29,15 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            T previous = currentValue;
+            var previous = currentValue;
 
             return source.Skip(1).Subscribe(
                 next =>
                 {
                     if (!history.IsPaused)
                     {
-                        T undoValue = previous;
-                        T redoValue = next;
+                        var undoValue = previous;
+                        var redoValue = next;
                         Action undo = () => update(undoValue);
                         Action redo = () => update(redoValue);
                         history.Snapshot(undo, redo);

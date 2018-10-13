@@ -16,14 +16,14 @@ namespace ReactiveHistory.UnitTests
             var item0 = new Item("item0");
 
             target.AddWithHistory(item0, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
         }
 
@@ -51,14 +51,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
@@ -82,14 +82,14 @@ namespace ReactiveHistory.UnitTests
             var item0 = new Item("item0");
 
             target.InsertWithHistory(0, item0, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
         }
 
@@ -117,14 +117,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item0, target[1]);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
@@ -163,14 +163,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
@@ -209,14 +209,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
@@ -241,19 +241,19 @@ namespace ReactiveHistory.UnitTests
             var item1 = new Item("item1");
 
             target.Add(item0);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.ReplaceWithHistory(0, item1, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item1, target[0]);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item1, target[0]);
         }
 
@@ -445,18 +445,18 @@ namespace ReactiveHistory.UnitTests
             var item0 = new Item("item0");
 
             target.Add(item0);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.RemoveWithHistory(item0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -483,14 +483,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             target.RemoveWithHistory(item1, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item2, target[0]);
 
             target.RemoveWithHistory(item2, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item2, target[0]);
 
             history.Undo();
@@ -510,11 +510,11 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item2, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -541,14 +541,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             target.RemoveWithHistory(item1, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.RemoveWithHistory(item0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
@@ -568,11 +568,11 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -599,14 +599,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             target.RemoveWithHistory(item2, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.RemoveWithHistory(item0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
@@ -626,11 +626,11 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -642,18 +642,18 @@ namespace ReactiveHistory.UnitTests
             var item0 = new Item("item0");
 
             target.Add(item0);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.RemoveWithHistory(0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -680,14 +680,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             target.RemoveWithHistory(0, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item2, target[0]);
 
             target.RemoveWithHistory(0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item2, target[0]);
 
             history.Undo();
@@ -707,11 +707,11 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item2, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -738,14 +738,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             target.RemoveWithHistory(1, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.RemoveWithHistory(0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
@@ -765,11 +765,11 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item1, target[1]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -796,14 +796,14 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             target.RemoveWithHistory(1, history);
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             target.RemoveWithHistory(0, history);
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Undo();
@@ -823,11 +823,11 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item2, target[1]);
 
             history.Redo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
+            Assert.Empty(target);
         }
 
         [Fact]
@@ -836,14 +836,14 @@ namespace ReactiveHistory.UnitTests
         {
             var history = new StackHistory();
             var target = new ObservableCollection<Item>();
-            Assert.Equal(0, target.Count);
-            Assert.Equal(0, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(target);
+            Assert.Empty(history.Undos);
+            Assert.Empty(history.Redos);
 
             target.ClearWithHistory(history);
-            Assert.Equal(0, target.Count);
-            Assert.Equal(0, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(target);
+            Assert.Empty(history.Undos);
+            Assert.Empty(history.Redos);
         }
 
         [Fact]
@@ -855,25 +855,25 @@ namespace ReactiveHistory.UnitTests
             var item0 = new Item("item0");
 
             target.Add(item0);
-            Assert.Equal(1, target.Count);
-            Assert.Equal(0, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Single(target);
+            Assert.Empty(history.Undos);
+            Assert.Empty(history.Redos);
 
             target.ClearWithHistory(history);
-            Assert.Equal(0, target.Count);
-            Assert.Equal(1, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(target);
+            Assert.Single(history.Undos);
+            Assert.Empty(history.Redos);
 
             history.Undo();
-            Assert.Equal(1, target.Count);
+            Assert.Single(target);
             Assert.Equal(item0, target[0]);
-            Assert.Equal(0, history.Undos.Count);
-            Assert.Equal(1, history.Redos.Count);
+            Assert.Empty(history.Undos);
+            Assert.Single(history.Redos);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
-            Assert.Equal(1, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(target);
+            Assert.Single(history.Undos);
+            Assert.Empty(history.Redos);
         }
 
         [Fact]
@@ -893,26 +893,26 @@ namespace ReactiveHistory.UnitTests
             Assert.Equal(item0, target[0]);
             Assert.Equal(item1, target[1]);
             Assert.Equal(item2, target[2]);
-            Assert.Equal(0, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(history.Undos);
+            Assert.Empty(history.Redos);
 
             target.ClearWithHistory(history);
-            Assert.Equal(0, target.Count);
-            Assert.Equal(1, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(target);
+            Assert.Single(history.Undos);
+            Assert.Empty(history.Redos);
 
             history.Undo();
             Assert.Equal(3, target.Count);
             Assert.Equal(item0, target[0]);
             Assert.Equal(item1, target[1]);
             Assert.Equal(item2, target[2]);
-            Assert.Equal(0, history.Undos.Count);
-            Assert.Equal(1, history.Redos.Count);
+            Assert.Empty(history.Undos);
+            Assert.Single(history.Redos);
 
             history.Redo();
-            Assert.Equal(0, target.Count);
-            Assert.Equal(1, history.Undos.Count);
-            Assert.Equal(0, history.Redos.Count);
+            Assert.Empty(target);
+            Assert.Single(history.Undos);
+            Assert.Empty(history.Redos);
         }
 
         class Item

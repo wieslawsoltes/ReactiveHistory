@@ -32,13 +32,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{7B85A9D4-E7E7-
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
 		appveyor.yml = appveyor.yml
+		azure-pipelines.yml = azure-pipelines.yml
+		circle.yml = circle.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cake", "cake", "{70D70406-8BB2-4ACF-A39C-CCCFC9AA96E8}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
-		build.ps1 = build.ps1
-		build.sh = build.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{04528DEE-83A0-41B8-B35A-6026C20AC281}"

@@ -160,7 +160,7 @@ var nuspecNuGetHistory = new NuGetPackSettings()
     Symbols = false,
     NoPackageAnalysis = true,
     Description = "Reactive undo/redo framework for .NET.",
-    Copyright = "Copyright 2016",
+    Copyright = "Copyright 2018",
     Tags = new [] { "Undo", "Redo", "History", "Reactive", "Managed", "C#" },
     Dependencies = new []
     {
@@ -168,15 +168,9 @@ var nuspecNuGetHistory = new NuGetPackSettings()
     },
     Files = new []
     {
-        // netstandard1.1
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard1.1/" + "ReactiveHistory.dll", Target = "lib/netstandard1.1" },
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard1.1/" + "ReactiveHistory.xml", Target = "lib/netstandard1.1" },
         // netstandard2.0
         new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard2.0/" + "ReactiveHistory.dll", Target = "lib/netstandard2.0" },
         new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/netstandard2.0/" + "ReactiveHistory.xml", Target = "lib/netstandard2.0" },
-        // net45
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/net45/" + "ReactiveHistory.dll", Target = "lib/net45" },
-        new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/net45/" + "ReactiveHistory.xml", Target = "lib/net45" },
         // net461
         new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/net461/" + "ReactiveHistory.dll", Target = "lib/net461" },
         new NuSpecContent { Source = "src/ReactiveHistory/bin/" + dirSuffix + "/net461/" + "ReactiveHistory.xml", Target = "lib/net461" }

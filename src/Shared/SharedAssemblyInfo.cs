@@ -3,7 +3,7 @@
 using System.Reflection;
 
 [assembly: AssemblyCompany("Wiesław Šoltés")]
-[assembly: AssemblyCopyright("Copyright © Wiesław Šoltés 2017")]
+[assembly: AssemblyCopyright("Copyright © Wiesław Šoltés 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyVersion("0.2.3")]
 [assembly: AssemblyFileVersion("0.2.3")]

@@ -118,26 +118,11 @@ git clone https://github.com/wieslawsoltes/ReactiveHistory.git
 git submodule update --init --recursive
 ```
 
-### Build using IDE
+### Build
 
 * [Visual Studio Community 2017](https://www.visualstudio.com/pl/vs/community/) for `Windows` builds.
-* [MonoDevelop](http://www.monodevelop.com/) for `Linux` builds.
 
 Open `ReactiveHistory.sln` in selected IDE and run `Build` command.
-
-### Build on Windows using script
-
-Open up a Powershell prompt and execute the bootstrapper script:
-```PowerShell
-PS> .\build.ps1 -Target "Default" -Platform "Any CPU" -Configuration "Release"
-```
-
-### Build on Linux/OSX using script
-
-Open up a terminal prompt and execute the bootstrapper script:
-```Bash
-$ ./build.sh --target "Default" --platform "Any CPU" --configuration "Release"
-```
 
 ## NuGet
 

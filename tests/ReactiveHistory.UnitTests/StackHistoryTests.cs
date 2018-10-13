@@ -18,9 +18,9 @@ namespace ReactiveHistory.UnitTests
             {
                 Assert.NotNull(target.Undos);
                 Assert.NotNull(target.Redos);
-                Assert.Equal(0, target.Undos.Count);
-                Assert.Equal(0, target.Redos.Count);
-                Assert.Equal(false, target.IsPaused);
+                Assert.Empty(target.Undos);
+                Assert.Empty(target.Redos);
+                Assert.False(target.IsPaused);
                 Assert.Equal(new bool[] { }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanClears.ToArray());
@@ -38,18 +38,18 @@ namespace ReactiveHistory.UnitTests
                 target.Snapshot(() => { }, () => { });
                 target.Snapshot(() => { }, () => { });
                 var result = target.Undo();
-                Assert.Equal(1, target.Undos.Count);
-                Assert.Equal(1, target.Redos.Count);
-                Assert.Equal(true, result);
+                Assert.Single(target.Undos);
+                Assert.Single(target.Redos);
+                Assert.True(result);
 
                 target.Dispose();
 
                 Assert.Null(target.Undos);
                 Assert.Null(target.Redos);
 
-                Assert.Throws(typeof(ObjectDisposedException), () => target.CanUndo.Subscribe(_ => { }));
-                Assert.Throws(typeof(ObjectDisposedException), () => target.CanRedo.Subscribe(_ => { }));
-                Assert.Throws(typeof(ObjectDisposedException), () => target.CanClear.Subscribe(_ => { }));
+                Assert.Throws<ObjectDisposedException>(() => target.CanUndo.Subscribe(_ => { }));
+                Assert.Throws<ObjectDisposedException>(() => target.CanRedo.Subscribe(_ => { }));
+                Assert.Throws<ObjectDisposedException>(() => target.CanClear.Subscribe(_ => { }));
             }
         }
 
@@ -62,8 +62,8 @@ namespace ReactiveHistory.UnitTests
             using (var helper = new HistoryHelper(target))
             {
                 target.Snapshot(() => { }, () => { });
-                Assert.Equal(1, target.Undos.Count);
-                Assert.Equal(0, target.Redos.Count);
+                Assert.Single(target.Undos);
+                Assert.Empty(target.Redos);
                 Assert.Equal(new bool[] { true }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { true }, helper.CanClears.ToArray());
@@ -79,17 +79,17 @@ namespace ReactiveHistory.UnitTests
             using (var helper = new HistoryHelper(target))
             {
                 target.Snapshot(() => { }, () => { });
-                Assert.Equal(1, target.Undos.Count);
-                Assert.Equal(0, target.Redos.Count);
+                Assert.Single(target.Undos);
+                Assert.Empty(target.Redos);
 
                 var result = target.Undo();
-                Assert.Equal(0, target.Undos.Count);
-                Assert.Equal(1, target.Redos.Count);
-                Assert.Equal(true, result);
+                Assert.Empty(target.Undos);
+                Assert.Single(target.Redos);
+                Assert.True(result);
 
                 target.Snapshot(() => { }, () => { });
-                Assert.Equal(1, target.Undos.Count);
-                Assert.Equal(0, target.Redos.Count);
+                Assert.Single(target.Undos);
+                Assert.Empty(target.Redos);
                 Assert.Equal(new bool[] { true, false, true }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { true, false }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { true, true, true }, helper.CanClears.ToArray());
@@ -105,7 +105,7 @@ namespace ReactiveHistory.UnitTests
             using (var helper = new HistoryHelper(target))
             {
                 var result = target.Undo();
-                Assert.Equal(false, result);
+                Assert.False(result);
                 Assert.Equal(new bool[] { }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanClears.ToArray());
@@ -121,7 +121,7 @@ namespace ReactiveHistory.UnitTests
             using (var helper = new HistoryHelper(target))
             {
                 var result = target.Redo();
-                Assert.Equal(false, result);
+                Assert.False(result);
                 Assert.Equal(new bool[] { }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { }, helper.CanClears.ToArray());
@@ -143,9 +143,9 @@ namespace ReactiveHistory.UnitTests
                 var result = target.Undo();
                 Assert.Equal(1, undoCount);
                 Assert.Equal(0, redoCount);
-                Assert.Equal(0, target.Undos.Count);
-                Assert.Equal(1, target.Redos.Count);
-                Assert.Equal(true, result);
+                Assert.Empty(target.Undos);
+                Assert.Single(target.Redos);
+                Assert.True(result);
                 Assert.Equal(new bool[] { true, false }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { true }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { true, true }, helper.CanClears.ToArray());
@@ -170,10 +170,10 @@ namespace ReactiveHistory.UnitTests
                 var result1 = target.Undo();
                 var redo1 = target.Redos.Peek();
                 var result2 = target.Redo();
-                Assert.Equal(1, target.Undos.Count);
-                Assert.Equal(0, target.Redos.Count);
-                Assert.Equal(true, result1);
-                Assert.Equal(true, result2);
+                Assert.Single(target.Undos);
+                Assert.Empty(target.Redos);
+                Assert.True(result1);
+                Assert.True(result2);
                 Assert.Equal(new bool[] { true, false, true }, helper.CanUndos.ToArray());
                 Assert.Equal(new bool[] { true, false }, helper.CanRedos.ToArray());
                 Assert.Equal(new bool[] { true, true, true }, helper.CanClears.ToArray());
@@ -183,7 +183,7 @@ namespace ReactiveHistory.UnitTests
                 Assert.Equal(undo1, redo1);
                 Assert.Equal(1, undoCount);
                 Assert.Equal(1, redoCount);
-                Assert.Equal(true, result1);
+                Assert.True(result1);
             }
         }
 

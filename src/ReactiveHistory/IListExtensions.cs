@@ -86,8 +86,8 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            T oldValue = source[index];
-            T newValue = item;
+            var oldValue = source[index];
+            var newValue = item;
             Action redo = () => source[index] = newValue;
             Action undo = () => source[index] = oldValue;
             history.Snapshot(undo, redo);
@@ -137,7 +137,7 @@ namespace ReactiveHistory
             if (history == null)
                 throw new ArgumentNullException(nameof(history));
 
-            T item = source[index];
+            var item = source[index];
             Action redo = () => source.RemoveAt(index);
             Action undo = () => source.Insert(index, item);
             history.Snapshot(undo, redo);
@@ -160,7 +160,7 @@ namespace ReactiveHistory
 
             if (source.Count > 0)
             {
-                T[] items = source.ToArray();
+                var items = source.ToArray();
                 Action redo = () =>
                 {
                     foreach (var item in items)

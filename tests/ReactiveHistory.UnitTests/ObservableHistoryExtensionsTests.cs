@@ -19,7 +19,7 @@ namespace ReactiveHistory.UnitTests
             using (subject.AsObservable().ObserveWithHistory(x => { }, 0, target))
             {
                 subject.OnNext(1);
-                Assert.Equal(0, target.Undos.Count);
+                Assert.Empty(target.Undos);
             }
         }
 
@@ -84,7 +84,7 @@ namespace ReactiveHistory.UnitTests
                     history.Undo(); // 3 -> 2
                     history.Undo(); // 2 -> 10 (finally restores initial state)
 
-                    Assert.Equal(0, history.Undos.Count);
+                    Assert.Empty(history.Undos);
                     Assert.Equal(2, history.Redos.Count);
                     Assert.Equal(new int[] { 2, 10 }, target);
 
@@ -92,7 +92,7 @@ namespace ReactiveHistory.UnitTests
                     history.Redo(); // 2 -> 3
 
                     Assert.Equal(2, history.Undos.Count);
-                    Assert.Equal(0, history.Redos.Count);
+                    Assert.Empty(history.Redos);
                     Assert.Equal(new int[] { 2, 10, 2, 3 }, target);
                 }
             }
