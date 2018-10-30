@@ -35,6 +35,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786}"
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
+		_config.yml = _config.yml
 		appveyor.yml = appveyor.yml
 		azure-pipelines.yml = azure-pipelines.yml
 		circle.yml = circle.yml
@@ -60,6 +61,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{1C68A69B
 		build\ReactiveProperty.props = build\ReactiveProperty.props
 		build\Rx.props = build\Rx.props
 		build\XUnit.props = build\XUnit.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{97B14D1B-E4E9-4076-9FEE-BB8155017B35}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Global
@@ -131,6 +138,7 @@ Global
 		{04528DEE-83A0-41B8-B35A-6026C20AC281} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{24184708-8950-4B74-9CBB-BB68291FF9C6} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{1C68A69B-E16C-4603-9DD3-DDB4E4393EDF} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
+		{97B14D1B-E4E9-4076-9FEE-BB8155017B35} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AF6934B-C008-472A-9E35-8EBA7CAEA3D8}
