@@ -9,8 +9,6 @@
 
 [![NuGet](https://img.shields.io/nuget/v/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory) [![MyGet](https://img.shields.io/myget/reactivehistory-nightly/vpre/ReactiveHistory.svg?label=myget)](https://www.myget.org/gallery/reactivehistory-nightly) 
 
-[![CodeFactor](https://www.codefactor.io/repository/github/wieslawsoltes/reactivehistory/badge)](https://www.codefactor.io/repository/github/wieslawsoltes/reactivehistory)
-
 **ReactiveHistory** is an undo/redo framework for .NET. 
 
 ## About
