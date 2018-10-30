@@ -10,6 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E982B451-CC08-4731-B035-E0E1B38B81A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		build.cake = build.cake
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistory.UnitTests", "tests\ReactiveHistory.UnitTests\ReactiveHistory.UnitTests.csproj", "{71BA2D95-53E6-42D4-ADAA-CF34C77494F5}"
 EndProject
@@ -34,11 +38,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{7B85A9D4-E7E7-
 		appveyor.yml = appveyor.yml
 		azure-pipelines.yml = azure-pipelines.yml
 		circle.yml = circle.yml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cake", "cake", "{70D70406-8BB2-4ACF-A39C-CCCFC9AA96E8}"
-	ProjectSection(SolutionItems) = preProject
-		build.cake = build.cake
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{04528DEE-83A0-41B8-B35A-6026C20AC281}"
@@ -129,7 +128,6 @@ Global
 		{3F0AC124-875C-4F92-8FAE-FF201C271CCF} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 		{342F4B0A-2EEB-434D-B4FC-8E76DA474729} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 		{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
-		{70D70406-8BB2-4ACF-A39C-CCCFC9AA96E8} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{04528DEE-83A0-41B8-B35A-6026C20AC281} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{24184708-8950-4B74-9CBB-BB68291FF9C6} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{1C68A69B-E16C-4603-9DD3-DDB4E4393EDF} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
