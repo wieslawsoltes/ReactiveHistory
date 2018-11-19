@@ -34,11 +34,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{E5AE18
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786}"
 	ProjectSection(SolutionItems) = preProject
-		.travis.yml = .travis.yml
 		_config.yml = _config.yml
 		appveyor.yml = appveyor.yml
 		azure-pipelines.yml = azure-pipelines.yml
-		circle.yml = circle.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{04528DEE-83A0-41B8-B35A-6026C20AC281}"
