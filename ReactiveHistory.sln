@@ -12,7 +12,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		build.cake = build.cake
+		.nuke = .nuke
+		build.ps1 = build.ps1
+		build.sh = build.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistory.UnitTests", "tests\ReactiveHistory.UnitTests\ReactiveHistory.UnitTests.csproj", "{71BA2D95-53E6-42D4-ADAA-CF34C77494F5}"
@@ -26,18 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Wpf", "samples\ReactiveHistorySample.Wpf\ReactiveHistorySample.Wpf.csproj", "{3F0AC124-875C-4F92-8FAE-FF201C271CCF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistorySample.Avalonia", "samples\ReactiveHistorySample.Avalonia\ReactiveHistorySample.Avalonia.csproj", "{342F4B0A-2EEB-434D-B4FC-8E76DA474729}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{E5AE18B0-5147-4FDD-B3A4-3EB695D7C444}"
-	ProjectSection(SolutionItems) = preProject
-		src\Shared\SharedAssemblyInfo.cs = src\Shared\SharedAssemblyInfo.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786}"
-	ProjectSection(SolutionItems) = preProject
-		_config.yml = _config.yml
-		appveyor.yml = appveyor.yml
-		azure-pipelines.yml = azure-pipelines.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{04528DEE-83A0-41B8-B35A-6026C20AC281}"
 	ProjectSection(SolutionItems) = preProject
@@ -54,8 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{1C68A69B
 	ProjectSection(SolutionItems) = preProject
 		build\Avalonia.Desktop.props = build\Avalonia.Desktop.props
 		build\Avalonia.props = build\Avalonia.props
-		build\NETCore.props = build\NETCore.props
-		build\NetFX.props = build\NetFX.props
+		build\Base.props = build\Base.props
+		build\EmbedXaml.props = build\EmbedXaml.props
 		build\ReactiveProperty.props = build\ReactiveProperty.props
 		build\Rx.props = build\Rx.props
 		build\XUnit.props = build\XUnit.props
@@ -132,7 +122,6 @@ Global
 		{A3C460F7-DF9E-4D6B-8CF3-A1E668C7F2F1} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 		{3F0AC124-875C-4F92-8FAE-FF201C271CCF} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 		{342F4B0A-2EEB-434D-B4FC-8E76DA474729} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
-		{7B85A9D4-E7E7-4BDB-B9AD-E6FFA195E786} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{04528DEE-83A0-41B8-B35A-6026C20AC281} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{24184708-8950-4B74-9CBB-BB68291FF9C6} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{1C68A69B-E16C-4603-9DD3-DDB4E4393EDF} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
