@@ -2,7 +2,6 @@
 
 [![Gitter](https://badges.gitter.im/wieslawsoltes/ReactiveHistory.svg)](https://gitter.im/wieslawsoltes/ReactiveHistory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/9mgwu7obsuh89kys?svg=true)](https://ci.appveyor.com/project/wieslawsoltes/reactivehistory)
 [![Build Status](https://dev.azure.com/wieslawsoltes/ReactiveHistory/_apis/build/status/wieslawsoltes.ReactiveHistory)](https://dev.azure.com/wieslawsoltes/ReactiveHistory/_build/latest?definitionId=1)
 
 [![NuGet](https://img.shields.io/nuget/v/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory) [![MyGet](https://img.shields.io/myget/reactivehistory-nightly/vpre/ReactiveHistory.svg?label=myget)](https://www.myget.org/gallery/reactivehistory-nightly) 
