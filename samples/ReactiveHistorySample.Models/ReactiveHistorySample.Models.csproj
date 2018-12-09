@@ -9,6 +9,11 @@
     <IsPackable>False</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Description>Reactive undo/redo framework for .NET.</Description>
+    <PackageTags>Undo;Redo;History;Reactive;Managed;C#</PackageTags>
+  </PropertyGroup>
+
   <Import Project="..\..\build\Base.props" />
 
   <ItemGroup>
