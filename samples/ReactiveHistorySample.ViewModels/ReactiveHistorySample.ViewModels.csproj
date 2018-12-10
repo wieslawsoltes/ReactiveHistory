@@ -1,12 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
-    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>False</IsPackable>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Reactive undo/redo framework for .NET.</Description>
+    <PackageTags>Undo;Redo;History;Reactive;Managed;C#</PackageTags>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\Base.props" />
+  <Import Project="..\..\build\ReactiveProperty.props" />
+  <Import Project="..\..\build\Rx.props" />
 
   <ItemGroup>
     <Compile Include="**\*.cs" Exclude="obj\**" />
@@ -16,8 +26,5 @@
     <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
     <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj" />
   </ItemGroup>
-
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\ReactiveProperty.props" />
-  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Rx.props" />
 
 </Project>
