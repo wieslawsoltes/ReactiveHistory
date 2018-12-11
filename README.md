@@ -2,7 +2,7 @@
 
 [![Gitter](https://badges.gitter.im/wieslawsoltes/ReactiveHistory.svg)](https://gitter.im/wieslawsoltes/ReactiveHistory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-[![Build Status](https://dev.azure.com/wieslawsoltes/GitHub/_apis/build/status/Sources/ReactiveHistory?branchName=master)](https://dev.azure.com/wieslawsoltes/GitHub/_build/latest?definitionId=59?branchName=master)
+[![Build status](https://dev.azure.com/wieslawsoltes/GitHub/_apis/build/status/Sources/ReactiveHistory)](https://dev.azure.com/wieslawsoltes/GitHub/_build/latest?definitionId=59)
 
 [![NuGet](https://img.shields.io/nuget/v/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory) [![MyGet](https://img.shields.io/myget/reactivehistory-nightly/vpre/ReactiveHistory.svg?label=myget)](https://www.myget.org/gallery/reactivehistory-nightly) 
 
