@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <PackageId>ReactiveHistory</PackageId>
     <Description>Reactive undo/redo framework for .NET.</Description>
     <PackageTags>Undo;Redo;History;Reactive;Managed;C#</PackageTags>
   </PropertyGroup>
