@@ -60,9 +60,9 @@ namespace ReactiveHistorySample.ViewModels
 
         private void Delete(LineShape line, IHistory history)
         {
-            if (line.Owner != null && line.Owner is Layer)
+            if (line.Owner != null && line.Owner is Layer layer)
             {
-                (line.Owner as Layer).Shapes.RemoveWithHistory(line, history);
+                layer.Shapes.RemoveWithHistory(line, history);
             }
         }
 

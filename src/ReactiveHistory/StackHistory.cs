@@ -80,7 +80,7 @@ namespace ReactiveHistory
                 Redos.Clear();
                 _canRedo.OnNext(false);
             }
-            Undos.Push(new State(undo, redo));
+            Undos.Push(new State(undo, redo, string.Empty, string.Empty));
             _canUndo.OnNext(true);
             _canClear.OnNext(true);
         }
@@ -142,8 +142,6 @@ namespace ReactiveHistory
         {
             Undos.Clear();
             Redos.Clear();
-            Undos = null;
-            Redos = null;
             _canUndo.Dispose();
             _canRedo.Dispose();
             _canClear.Dispose();

@@ -36,14 +36,8 @@ namespace ReactiveHistory
         /// <param name="redo">The redo state action.</param>
         /// <param name="undoName">The undo state name.</param>
         /// <param name="redoName">The redo state name.</param>
-        public State(Action undo, Action redo, string undoName = null, string redoName = null)
+        public State(Action undo, Action redo, string undoName, string redoName)
         {
-            if (undo == null)
-                throw new ArgumentNullException(nameof(undo));
-
-            if (redo == null)
-                throw new ArgumentNullException(nameof(redo));
-
             Undo = undo;
             Redo = redo;
             UndoName = undoName;

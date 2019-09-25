@@ -20,17 +20,10 @@ namespace ReactiveHistorySample.Models
             set { Update(ref _end, value); }
         }
 
-        public LineShape(object owner = null, string name = null)
+        public LineShape(object owner, string name, PointShape start, PointShape end) : base(owner, name)
         {
-            this.Owner = owner;
-            this.Name = name;
-        }
-
-        public LineShape(PointShape start, PointShape end, object owner = null, string name = null)
-            : this(owner, name)
-        {
-            this.Start = start;
-            this.End = end;
+            _start = start;
+            _end = end;
         }
     }
 }

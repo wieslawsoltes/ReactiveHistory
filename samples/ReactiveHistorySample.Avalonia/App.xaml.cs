@@ -42,16 +42,22 @@ namespace ReactiveHistorySample.Avalonia
 
                 // Model
 
-                var layer1 = new Layer("layer1");
+                object owner = new object();
 
-                var line1 = new LineShape(layer1, "line1");
-                line1.Start = new PointShape(100, 100, line1, "start11");
-                line1.End = new PointShape(200, 100, line1, "end11");
+                var layer1 = new Layer(owner, "layer1");
+
+                var start11 = new PointShape(owner, "start11", 100, 100);
+                var end11 = new PointShape(owner, "end11", 200, 100);
+                var line1 = new LineShape(layer1, "line1", start11, end11);
+                start11.Owner = line1;
+                end11.Owner = line1;
                 layer1.Shapes.Add(line1);
 
-                var line2 = new LineShape(layer1, "line2");
-                line2.Start = new PointShape(100, 200, line2, "start21");
-                line2.End = new PointShape(200, 200, line2, "end21");
+                var start21 = new PointShape(owner, "start21", 100, 200);
+                var end21 = new PointShape(owner, "end21", 200, 200);
+                var line2 = new LineShape(layer1, "line2", start21, end21);
+                start21.Owner = line2;
+                line2.Owner = line2;
                 layer1.Shapes.Add(line2);
 
                 // ViewModel
@@ -68,7 +74,7 @@ namespace ReactiveHistorySample.Avalonia
 
                 var layerCanvas = mainWindow.FindControl<LayerCanvas>("layerCanvas");
 
-                LineShape line = null;
+                LineShape? line = null;
 
                 layerCanvas.PointerPressed += (sender, e) =>
                 {
@@ -77,9 +83,11 @@ namespace ReactiveHistorySample.Avalonia
                         var point = e.GetPosition(layerCanvas);
                         if (line == null)
                         {
-                            line = new LineShape(layer1, "line");
-                            line.Start = new PointShape(point.X, point.Y, line1, "start");
-                            line.End = new PointShape(point.X, point.Y, line1, "end");
+                            var start = new PointShape(layer1.Owner, "start", point.X, point.Y);
+                            var end = new PointShape(layer1.Owner, "end", point.X, point.Y);
+                            line = new LineShape(layer1, "line", start, end);
+                            line.Start.Owner = line;
+                            line.End.Owner = line;
                             //layer1.Shapes.AddWithHistory(line, history);
                             layer1.Shapes.Add(line);
                             //history.IsPaused = true;

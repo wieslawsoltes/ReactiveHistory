@@ -14,11 +14,9 @@ namespace ReactiveHistorySample.Models
             set { Update(ref _shapes, value); }
         }
 
-        public Layer(object owner = null, string name = null)
+        public Layer(object owner, string name) : base(owner, name)
         {
-            this.Owner = owner;
-            this.Name = name;
-            this.Shapes = new ObservableCollection<LineShape>();
+            _shapes = new ObservableCollection<LineShape>();
         }
     }
 }

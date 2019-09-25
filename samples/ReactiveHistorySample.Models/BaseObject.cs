@@ -19,5 +19,11 @@ namespace ReactiveHistorySample.Models
             get { return _name; }
             set { Update(ref _name, value); }
         }
+
+        public BaseObject(object owner, string name)
+        {
+            _owner = owner;
+            _name = name;
+        }
     }
 }
