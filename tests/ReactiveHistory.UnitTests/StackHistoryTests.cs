@@ -44,8 +44,8 @@ namespace ReactiveHistory.UnitTests
 
                 target.Dispose();
 
-                Assert.Null(target.Undos);
-                Assert.Null(target.Redos);
+                Assert.Empty(target.Undos);
+                Assert.Empty(target.Redos);
 
                 Assert.Throws<ObjectDisposedException>(() => target.CanUndo.Subscribe(_ => { }));
                 Assert.Throws<ObjectDisposedException>(() => target.CanRedo.Subscribe(_ => { }));
