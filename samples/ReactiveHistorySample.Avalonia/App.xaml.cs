@@ -4,6 +4,7 @@ using System;
 using System.Reactive.Disposables;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Diagnostics;
 using Avalonia.Input;
 using Avalonia.Logging.Serilog;
@@ -18,10 +19,9 @@ namespace ReactiveHistorySample.Avalonia
 {
     class App : Application
     {
-        public override void Initialize()
+        static void Main(string[] args)
         {
-            AvaloniaXamlLoader.Load(this);
-            base.Initialize();
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
         }
 
         public static AppBuilder BuildAvaloniaApp()
@@ -29,17 +29,17 @@ namespace ReactiveHistorySample.Avalonia
                          .UsePlatformDetect()
                          .LogToDebug();
 
-        static void Main(string[] args)
+        public override void Initialize()
         {
-            var appBuilder = BuildAvaloniaApp().SetupWithoutStarting();
-            var app = appBuilder.Instance as App;
-            app.Start();
+            AvaloniaXamlLoader.Load(this);
         }
 
-        public void Start()
+        public override void OnFrameworkInitializationCompleted()
         {
-            using (var disposable = new CompositeDisposable())
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
             {
+                var disposable = new CompositeDisposable();
+
                 // Model
 
                 var layer1 = new Layer("layer1");
@@ -61,16 +61,20 @@ namespace ReactiveHistorySample.Avalonia
 
                 // Window
 
-                var mainWindow = new MainWindow();
+                var mainWindow = new MainWindow()
+                {
+                    DataContext = layerViewModel
+                };
+
                 var layerCanvas = mainWindow.FindControl<LayerCanvas>("layerCanvas");
 
                 LineShape line = null;
 
-                layerCanvas.PointerPressed += (sender, args) =>
+                layerCanvas.PointerPressed += (sender, e) =>
                 {
-                    if (args.MouseButton == MouseButton.Left)
+                    if (e.GetPointerPoint(layerCanvas).Properties.IsLeftButtonPressed)
                     {
-                        var point = args.GetPosition(layerCanvas);
+                        var point = e.GetPosition(layerCanvas);
                         if (line == null)
                         {
                             line = new LineShape(layer1, "line");
@@ -92,7 +96,7 @@ namespace ReactiveHistorySample.Avalonia
                             layerCanvas.InvalidateVisual();
                         }
                     }
-                    else if (args.MouseButton == MouseButton.Right)
+                    else if (e.GetPointerPoint(layerCanvas).Properties.IsRightButtonPressed)
                     {
                         if (line != null)
                         {
@@ -116,17 +120,18 @@ namespace ReactiveHistorySample.Avalonia
 
                 history.CanClear.Subscribe(_ => layerCanvas.InvalidateVisual()).AddTo(disposable);
 
-                mainWindow.DataContext = layerViewModel;
-                mainWindow.Show();
-                Run(mainWindow);
-            }
-        }
+                desktopLifetime.MainWindow = mainWindow;
 
-        public static void AttachDevTools(Window window)
-        {
-#if DEBUG
-            DevTools.Attach(window);
-#endif
+                desktopLifetime.Exit += (sennder, e) =>
+                {
+                    disposable.Dispose();
+                };
+            }
+            else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewLifetime)
+            {
+                //singleViewLifetime.MainView = new MainView();
+            }
+            base.OnFrameworkInitializationCompleted();
         }
     }
 }

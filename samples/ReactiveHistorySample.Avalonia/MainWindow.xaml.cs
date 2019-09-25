@@ -10,7 +10,6 @@ namespace ReactiveHistorySample.Avalonia
         public MainWindow()
         {
             this.InitializeComponent();
-            App.AttachDevTools(this);
         }
 
         private void InitializeComponent()
