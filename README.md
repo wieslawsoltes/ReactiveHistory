@@ -4,7 +4,9 @@
 
 [![Build status](https://dev.azure.com/wieslawsoltes/GitHub/_apis/build/status/Sources/ReactiveHistory)](https://dev.azure.com/wieslawsoltes/GitHub/_build/latest?definitionId=59)
 
-[![NuGet](https://img.shields.io/nuget/v/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory) [![MyGet](https://img.shields.io/myget/reactivehistory-nightly/vpre/ReactiveHistory.svg?label=myget)](https://www.myget.org/gallery/reactivehistory-nightly) 
+[![NuGet](https://img.shields.io/nuget/v/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory)
+[![NuGet](https://img.shields.io/nuget/dt/ReactiveHistory.svg)](https://www.nuget.org/packages/ReactiveHistory)
+[![MyGet](https://img.shields.io/myget/reactivehistory-nightly/vpre/ReactiveHistory.svg?label=myget)](https://www.myget.org/gallery/reactivehistory-nightly) 
 
 **ReactiveHistory** is an undo/redo framework for .NET. 
 
