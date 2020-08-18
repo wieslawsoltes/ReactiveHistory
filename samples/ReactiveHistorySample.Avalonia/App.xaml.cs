@@ -7,7 +7,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Diagnostics;
 using Avalonia.Input;
-using Avalonia.Logging.Serilog;
 using Avalonia.Markup.Xaml;
 using Reactive.Bindings.Extensions;
 using ReactiveHistory;
@@ -78,7 +77,7 @@ namespace ReactiveHistorySample.Avalonia
 
                 layerCanvas.PointerPressed += (sender, e) =>
                 {
-                    if (e.GetPointerPoint(layerCanvas).Properties.IsLeftButtonPressed)
+                    if (e.GetCurrentPoint(layerCanvas).Properties.IsLeftButtonPressed)
                     {
                         var point = e.GetPosition(layerCanvas);
                         if (line == null)
@@ -104,7 +103,7 @@ namespace ReactiveHistorySample.Avalonia
                             layerCanvas.InvalidateVisual();
                         }
                     }
-                    else if (e.GetPointerPoint(layerCanvas).Properties.IsRightButtonPressed)
+                    else if (e.GetCurrentPoint(layerCanvas).Properties.IsRightButtonPressed)
                     {
                         if (line != null)
                         {
