@@ -24,7 +24,7 @@ namespace ReactiveHistorySample.Avalonia
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                          .UsePlatformDetect()
-                         .LogToDebug();
+                         .LogToTrace();
 
         public override void Initialize()
         {
