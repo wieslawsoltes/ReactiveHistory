@@ -115,12 +115,6 @@ git clone https://github.com/wieslawsoltes/ReactiveHistory.git
 git submodule update --init --recursive
 ```
 
-### Build
-
-* [Visual Studio Community 2017](https://www.visualstudio.com/pl/vs/community/) for `Windows` builds.
-
-Open `ReactiveHistory.sln` in selected IDE and run `Build` command.
-
 ## NuGet
 
 ReactiveHistory is delivered as a NuGet package.
@@ -133,14 +127,6 @@ You can find the packages here [NuGet](https://www.nuget.org/packages/ReactiveHi
 You can install the package like this:
 
 `Install-Package ReactiveHistory -Pre`
-
-### Package Dependencies
-
-* [System.Reactive](https://www.nuget.org/packages/System.Reactive/)
-* [System.Reactive.Core](https://www.nuget.org/packages/System.Reactive.Core/)
-* [System.Reactive.Interfaces](https://www.nuget.org/packages/System.Reactive.Interfaces/)
-* [System.Reactive.Linq](https://www.nuget.org/packages/System.Reactive.Linq/)
-* [System.Reactive.PlatformServices](https://www.nuget.org/packages/System.Reactive.PlatformServices/)
 
 ### Package Sources
 
