@@ -16,6 +16,7 @@
   </PropertyGroup>
 
   <Import Project="..\..\build\Base.props" />
+  <Import Project="..\..\build\SourceLink.props" />
   <Import Project="..\..\build\ReferenceAssemblies.props" />
   <Import Project="..\..\build\Rx.props" />
 
