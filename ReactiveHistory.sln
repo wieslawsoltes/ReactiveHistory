@@ -12,10 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		.nuke = .nuke
 		build.ps1 = build.ps1
 		build.sh = build.sh
 		global.json = global.json
+		azure-pipelines.yml = azure-pipelines.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveHistory.UnitTests", "tests\ReactiveHistory.UnitTests\ReactiveHistory.UnitTests.csproj", "{71BA2D95-53E6-42D4-ADAA-CF34C77494F5}"
