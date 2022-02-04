@@ -1,11 +1,11 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace ReactiveHistorySample.Avalonia
+namespace ReactiveHistorySample.Views
 {
-    public class MainWindow : Window
+    public class LineShapeView : UserControl
     {
-        public MainWindow()
+        public LineShapeView()
         {
             this.InitializeComponent();
         }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ReactiveHistorySample.Avalonia.Views.PointShapeView"
+﻿<UserControl x:Class="ReactiveHistorySample.Views.PointShapeView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">

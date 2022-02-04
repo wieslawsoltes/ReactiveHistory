@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using ReactiveHistorySample.ViewModels;
 
-namespace ReactiveHistorySample.Avalonia.Controls
+namespace ReactiveHistorySample.Controls
 {
     public class LayerCanvas : Canvas
     {

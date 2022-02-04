@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5.0;net6.0</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IsPackable>False</IsPackable>
     <Nullable>enable</Nullable>
+    <RootNamespace>ReactiveHistorySample</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -16,16 +16,13 @@
 
   <Import Project="..\..\build\Base.props" />
   <Import Project="..\..\build\ReferenceAssemblies.props" />
-  <Import Project="..\..\build\ReactiveProperty.props" />
   <Import Project="..\..\build\Rx.props" />
-
-  <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\**" />
-  </ItemGroup>
+  <Import Project="..\..\build\Avalonia.props" />
+  <Import Project="..\..\build\Avalonia.Desktop.props" />
+  <Import Project="..\..\build\ReactiveProperty.props" />
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
-    <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj" />
   </ItemGroup>
 
 </Project>

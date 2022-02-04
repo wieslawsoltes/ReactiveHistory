@@ -4,9 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
     <IsPackable>False</IsPackable>
     <Nullable>enable</Nullable>
+    <RootNamespace>ReactiveHistorySample.Avalonia</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -28,15 +28,8 @@
   <Import Project="..\..\build\ReactiveProperty.props" />
 
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\**" />
-  </ItemGroup>
-
-  <Import Project="..\..\build\EmbedXaml.props" />
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\ReactiveHistory\ReactiveHistory.csproj" />
-    <ProjectReference Include="..\ReactiveHistorySample.Models\ReactiveHistorySample.Models.csproj" />
-    <ProjectReference Include="..\ReactiveHistorySample.ViewModels\ReactiveHistorySample.ViewModels.csproj" />
+    <ProjectReference Include="..\ReactiveHistorySample.Base\ReactiveHistorySample.Base.csproj" />
   </ItemGroup>
 
 </Project>
