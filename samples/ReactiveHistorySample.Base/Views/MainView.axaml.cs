@@ -28,7 +28,7 @@ public class MainView : UserControl
 
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
-        _disposable.Dispose();
+        Cleanup();
 
         base.OnDetachedFromVisualTree(e);
     }
@@ -37,6 +37,27 @@ public class MainView : UserControl
     {
         // Model
 
+        var layer1 = CreateLayer();
+
+        // ViewModel
+
+        var history = new StackHistory().AddTo(_disposable);
+        var layerViewModel = new LayerViewModel(layer1, history).AddTo(_disposable);
+
+        // Window
+
+        DataContext = layerViewModel;
+
+        HandleEvents(layer1, history);
+    }
+
+    private void Cleanup()
+    {
+        _disposable.Dispose();
+    }
+
+    private Layer CreateLayer()
+    {
         object owner = new object();
 
         var layer1 = new Layer(owner, "layer1");
@@ -55,15 +76,11 @@ public class MainView : UserControl
         line2.Owner = line2;
         layer1.Shapes.Add(line2);
 
-        // ViewModel
+        return layer1;
+    }
 
-        var history = new StackHistory().AddTo(_disposable);
-        var layerViewModel = new LayerViewModel(layer1, history).AddTo(_disposable);
-
-        // Window
-
-        DataContext = layerViewModel;
-
+    private void HandleEvents(Layer layer1, StackHistory history)
+    {
         var layerCanvas = this.FindControl<LayerCanvas>("layerCanvas");
 
         LineShape? line = null;
