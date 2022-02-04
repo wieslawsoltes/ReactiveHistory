@@ -1,47 +1,46 @@
 ﻿using System;
 using System.Reactive.Linq;
 
-namespace ReactiveHistory
+namespace ReactiveHistory;
+
+/// <summary>
+/// Observable extension methods for the generic observable implementations.
+/// </summary>
+public static class IObservableExtensions
 {
     /// <summary>
-    /// Observable extension methods for the generic observable implementations.
+    /// Observe property changes with history.
     /// </summary>
-    public static class IObservableExtensions
+    /// <param name="source">The property value observable.</param>
+    /// <param name="update">The property update action.</param>
+    /// <param name="currentValue">The property current value.</param>
+    /// <param name="history">The history object.</param>
+    /// <returns>The property value changes subscription.</returns>
+    public static IDisposable ObserveWithHistory<T>(this IObservable<T> source, Action<T> update, T currentValue, IHistory history)
     {
-        /// <summary>
-        /// Observe property changes with history.
-        /// </summary>
-        /// <param name="source">The property value observable.</param>
-        /// <param name="update">The property update action.</param>
-        /// <param name="currentValue">The property current value.</param>
-        /// <param name="history">The history object.</param>
-        /// <returns>The property value changes subscription.</returns>
-        public static IDisposable ObserveWithHistory<T>(this IObservable<T> source, Action<T> update, T currentValue, IHistory history)
-        {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
+        if (source == null)
+            throw new ArgumentNullException(nameof(source));
 
-            if (update == null)
-                throw new ArgumentNullException(nameof(update));
+        if (update == null)
+            throw new ArgumentNullException(nameof(update));
 
-            if (history == null)
-                throw new ArgumentNullException(nameof(history));
+        if (history == null)
+            throw new ArgumentNullException(nameof(history));
 
-            var previous = currentValue;
+        var previous = currentValue;
 
-            return source.Skip(1).Subscribe(
-                next =>
+        return source.Skip(1).Subscribe(
+            next =>
+            {
+                if (!history.IsPaused)
                 {
-                    if (!history.IsPaused)
-                    {
-                        var undoValue = previous;
-                        var redoValue = next;
-                        void undo() => update(undoValue);
-                        void redo() => update(redoValue);
-                        history.Snapshot(undo, redo);
-                    }
-                    previous = next;
-                });
-        }
+                    var undoValue = previous;
+                    var redoValue = next;
+                    void undo() => update(undoValue);
+                    void redo() => update(redoValue);
+                    history.Snapshot(undo, redo);
+                }
+                previous = next;
+            });
     }
 }
