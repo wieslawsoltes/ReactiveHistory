@@ -46,6 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{1C68A69B
 		build\Rx.props = build\Rx.props
 		build\XUnit.props = build\XUnit.props
 		build\SourceLink.props = build\SourceLink.props
+		build\Avalonia.Web.Blazor.props = build\Avalonia.Web.Blazor.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{97B14D1B-E4E9-4076-9FEE-BB8155017B35}"
@@ -57,6 +58,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\build\_build.csproj", "{AC563EBE-9593-4709-B201-CB225B857660}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Desktop", "samples\ReactiveHistorySample.Desktop\ReactiveHistorySample.Desktop.csproj", "{A4203378-4E00-4360-9B4D-2266BFD4F77C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveHistorySample.Web", "samples\ReactiveHistorySample.Web\ReactiveHistorySample.Web.csproj", "{3AA98723-5824-4EC5-9814-CC156D0F76E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +87,10 @@ Global
 		{A4203378-4E00-4360-9B4D-2266BFD4F77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4203378-4E00-4360-9B4D-2266BFD4F77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4203378-4E00-4360-9B4D-2266BFD4F77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA98723-5824-4EC5-9814-CC156D0F76E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA98723-5824-4EC5-9814-CC156D0F76E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA98723-5824-4EC5-9814-CC156D0F76E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA98723-5824-4EC5-9814-CC156D0F76E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +104,7 @@ Global
 		{97B14D1B-E4E9-4076-9FEE-BB8155017B35} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{AC563EBE-9593-4709-B201-CB225B857660} = {A47CBA6E-2F46-4308-BA5B-DE4AE5253F32}
 		{A4203378-4E00-4360-9B4D-2266BFD4F77C} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
+		{3AA98723-5824-4EC5-9814-CC156D0F76E8} = {4A600469-8200-4BDD-AA90-6B34B2D1CD2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AF6934B-C008-472A-9E35-8EBA7CAEA3D8}
