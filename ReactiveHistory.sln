@@ -47,6 +47,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{1C68A69B
 		build\XUnit.props = build\XUnit.props
 		build\SourceLink.props = build\SourceLink.props
 		build\Avalonia.Web.Blazor.props = build\Avalonia.Web.Blazor.props
+		build\Avalonia.Themes.Fluent.props = build\Avalonia.Themes.Fluent.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{97B14D1B-E4E9-4076-9FEE-BB8155017B35}"

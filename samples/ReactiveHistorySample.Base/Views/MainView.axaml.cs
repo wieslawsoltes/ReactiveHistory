@@ -82,6 +82,10 @@ public class MainView : UserControl
     private void HandleEvents(Layer layer1, StackHistory history)
     {
         var layerCanvas = this.FindControl<LayerCanvas>("layerCanvas");
+        if (layerCanvas is null)
+        {
+            return;
+        }
 
         LineShape? line = null;
 
