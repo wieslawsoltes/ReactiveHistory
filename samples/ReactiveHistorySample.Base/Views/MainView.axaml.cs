@@ -73,7 +73,7 @@ public class MainView : UserControl
         var end21 = new PointShape(owner, "end21", 200, 200);
         var line2 = new LineShape(layer1, "line2", start21, end21);
         start21.Owner = line2;
-        line2.Owner = line2;
+        end21.Owner = line2;
         layer1.Shapes.Add(line2);
 
         return layer1;
