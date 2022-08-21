@@ -1,8 +1,8 @@
 ﻿<Window x:Class="ReactiveHistorySample.Views.MainWindow"
-        xmlns="https://github.com/avaloniaui" 
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:views="clr-namespace:ReactiveHistorySample.Views"
-        Title="ReactiveHistory Sample" Height="700" Width="1000"
+        Title="ReactiveHistory Sample" Height="700" Width="1150"
         UseLayoutRounding="True">
   <views:MainView />
 </Window>
